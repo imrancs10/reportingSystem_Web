@@ -1,0 +1,38 @@
+.wrapper{
+    height: 100vh;
+    background-color: rgb(196, 194, 194);
+}
+.container{
+    width: 60%;
+    padding-top: 100px;
+}
+.card-header{
+    margin: 0px 0px;
+}
+.card-body{
+    padding: 0px 0px;
+}
+.btn-group{
+    width: 100%;
+}
+.error{
+    color: red;
+
+}
+.card-bodys{
+    padding: 16px;
+}
+.boxs{
+    padding-top: 5px;
+}
+.btns{
+    text-decoration: none;
+    border: none;
+    color: black;
+    background-color: #ffffff;
+}
+.btns:hover{
+    color: blue;
+    text-decoration: underline;
+    transform: scale(1.1);
+}

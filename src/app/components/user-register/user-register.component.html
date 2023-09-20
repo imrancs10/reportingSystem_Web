@@ -1,0 +1,141 @@
+<div class="mainW">
+    <div class="cardLayout container">
+        <div class="card">
+            <h2 class="card-header" style="background-color: rgb(144, 144, 163); text-align: center">
+                Register Your Hospital/Organization
+            </h2>
+            <div class="card-body">
+                <p>
+                    Kindly fill all Required <b>*</b> fields
+                </p>
+                <form (ngSubmit)="onClick(registerForm)" #registerForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <label>Organization Name* :</label>
+                            <input type="text" required ngModel name="organization_name" class="form-control custom-input"
+                                placeholder="Organization Name" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['organization_name']?.touched && registerForm.controls['organization_name'].errors?.['required']">
+                                Name is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label>Organization Email * :</label>
+                            <input type="email" required ngModel name="gmail" class="form-control custom-input"
+                                placeholder="Please Enter Email" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['required']">
+                                Email is required
+                            </div>
+                            <div class="error"
+                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['email']">
+                                Email is Invalid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style=" padding-top: 10px;">
+                        <div class="col-md-4 col-sm-12">
+                            <label>First Name * :</label>
+                            <input type="text" required ngModel name="fname" class="form-control custom-input"
+                                placeholder="Please Enter First Name" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['fname']?.touched && registerForm.controls['fname'].errors?.['required']">
+                                First Name is required
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label>Last Name * :</label>
+                            <input type="text" required ngModel name="lname" class="form-control custom-input"
+                                placeholder="Please Enter Last Name" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['lname']?.touched && registerForm.controls['lname'].errors?.['required']">
+                                Last Name is required
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label>State*: </label>
+                            <select class="form-select" ngModel required name="state"
+                                aria-label="Default select example">
+                                <option selected value="">Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="row" style="padding-top: 5px;">
+                        <div class="col-md-4 col-sm-12">
+                            <label>City* :</label>
+                            <input type="text" required ngModel name="city" class="form-control custom-input"
+                                placeholder="Enter City" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['city']?.touched && registerForm.controls['city'].errors?.['required']">
+                                City is required
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label>Pincode* :</label>
+                            <input type="number" required ngModel name="Pincode" class="form-control custom-input"
+                                placeholder="Enter Pincode" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['Pincode']?.touched && registerForm.controls['Pincode'].errors?.['required']">
+                                Pincode is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <label>Phone Number* :</label>
+                            <input type="number" required ngModel name="phone" class="form-control custom-input"
+                                placeholder="Enter Phone Number" autocomplete="off" />
+                            <div class="error"
+                                *ngIf="registerForm.controls['phone']?.touched && registerForm.controls['phone'].errors?.['required']">
+                                Phone Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 10px; padding-left: 10px;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="terms"
+                                required [(ngModel)]="termsCondition" disabled>
+                            <label>
+                                I Agree to<button type="button" class="btns-terms" (click)="openDialog()">Terms and Condition</button>*
+                            </label>
+                        </div>
+                    </div>
+                    <div style="padding-top: 20px; align-items: center; text-align: center">
+                        <button mat-raised-button color="accent">Submit</button>
+                    </div>
+                </form>
+                <p>Already Registered Organization? <button class="btns" (click)="onLogin()">Login</button></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <app-footer></app-footer>
+    </div>
+</div>

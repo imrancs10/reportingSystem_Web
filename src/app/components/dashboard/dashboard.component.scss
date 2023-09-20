@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the layout fills the entire viewport height. */
+}
+
+.content {
+    flex: 1; /* Allows the main content to grow and take up remaining space. */
+    padding-top: 20px;
+}
+
+.line{
+    margin-top: 20px;
+    height: 2px;
+    background-color: rgb(74, 71, 71);
+    width: 100%;
+}

@@ -1,0 +1,41 @@
+<div class="mainH" *ngIf="data.msg==='fields'">
+    <div>
+        <h2 style="display: flex; align-items: center; justify-content: center;">
+            Alert &nbsp; <mat-icon>warning</mat-icon>
+          </h2>
+          <hr>
+    </div>
+<div style="padding: 0px 30px;">
+  <p style="font-size: 15px;">Kindly fill All <b>Mandatory</b> ( * ) Fields</p>
+</div>
+<div mat-dialog-actions style="padding: 0px 10px; display: block; text-align: center;">
+  <button mat-raised-button mat-dialog-close color="primary" cdkFocusInitial>Ok</button>
+</div>
+</div>
+<div *ngIf="data.msg==='alert'">
+  <div style="padding: 0px 20px;">
+    <h3 style="display: block; text-align: center;">Please Choose Option**</h3>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 1em 3.5em 0em 3.5em">
+      <button mat-raised-button (click)="onDownlad()" color="primary">Download CSV</button>
+      <button mat-raised-button>Print</button>
+    </div>
+    <h5 style="padding: 5px 20px 0px 20px;">**We are working to Print the format now please download CSV file</h5>
+  </div>
+</div>
+
+<div *ngIf="data.msg==='pdfError'">
+  <div style="padding: 0px 20px;height: 150px;">
+    <hr>
+    <h2 style="display: block; text-align: center; margin: 50px 0px;">Something went wrong! please try again later</h2>
+    <hr>
+  </div>
+</div>
+
+<div *ngIf="data.msg==='reset'" style="height: 150px; padding: 20px;">
+  <h1 style="text-align: center;">Choose Report Action</h1>
+  <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 1em 3.5em 0em 3.5em">
+    <button mat-raised-button mat-dialog-close="reset">Generate New</button>
+    <button mat-raised-button mat-dialog-close="edit" color="primary">Edit Previous</button>
+  </div>
+
+</div>

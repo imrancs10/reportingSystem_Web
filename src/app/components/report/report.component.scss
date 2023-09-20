@@ -1,0 +1,35 @@
+.columns{
+    padding-bottom: 1rem;
+}
+
+.btns{
+    margin-top: .5rem;
+    padding-bottom: 20px;
+    display: block;
+    text-align: right;
+}
+.error{
+    color: rgb(255, 0, 0);
+    background-color: white;
+    
+}
+.checkout{
+    height: 10px;
+}
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loading-overlay.show {
+    display: flex;
+  }
+  
