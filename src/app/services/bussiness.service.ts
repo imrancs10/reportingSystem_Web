@@ -1,49 +1,65 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { setup } from './setup';
 @Injectable({
   providedIn: 'root'
 })
 export class BussinessService {
-  apiUrl:any;
-  constructor(public http:HttpClient) {
-    if(setup.production){
-      this.apiUrl=setup.API_URL;
+  apiUrl: any;
+  constructor(public http: HttpClient) {
+    if (setup.production) {
+      this.apiUrl = setup.API_URL;
     }
-    else{
-      this.apiUrl=setup.API_URL_LOCAL;
+    else {
+      this.apiUrl = setup.API_URL_LOCAL;
     }
     console.log(this.apiUrl);
   }
-  private allPatientData:any;
+  private allPatientData: any;
 
-  savePatientData(data:any){
-    this.allPatientData=data;
-    console.log(this.allPatientData,'from service');
+  savePatientData(data: any) {
+    this.allPatientData = data;
+    console.log(this.allPatientData, 'from service');
   }
 
-  getAllPatientData(){
+  getAllPatientData() {
     return this.allPatientData;
   }
 
   getPdf(): Observable<Blob> {
-    let body=this.allPatientData;
+    let body = this.allPatientData;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'wordfile/', body, { headers, responseType: 'blob' })
+    return this.http.post(this.apiUrl + 'wordfile/', body, { headers, responseType: 'blob' })
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  saveDataToDB(){
-    return this.http.post(this.apiUrl+'medical-data/',this.allPatientData);
+  saveDataToDB(model: any): Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers: httpHeaders }).pipe(
+      map(this.extractData),
+      catchError(this.handleErrorObservable)
+    );
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers });
   }
 
-  getAllDataFromDB(){
-    return this.http.get(this.apiUrl+'medical-data/');
+  getAllDataFromDB() {
+    return this.http.get(this.apiUrl + 'medical-data/');
   }
-
+  private extractData(res: any) {
+    let body = res;
+    return body;
+  }
+  private handleErrorObservable(error: any) {
+    console.error(error.message || error);
+    return throwError(error);
+  }
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error);
     return throwError('Something went wrong; please try again later.');
@@ -86,11 +102,11 @@ export class BussinessService {
     return csvRows.join('\n');
   }
 
-  public getPass(){
+  public getPass() {
     return this.generateHexadecimalPassword(12);
   }
 
-  private generateHexadecimalPassword(length:any) {
+  private generateHexadecimalPassword(length: any) {
     const hexChars = '0123456789ABCDEF';
     let password = '';
     for (let i = 0; i < length; i++) {

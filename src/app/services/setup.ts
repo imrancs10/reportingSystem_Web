@@ -1,5 +1,5 @@
 export const setup={
-    production:true,
-    API_URL_LOCAL:'http://localhost:8000/',
+    production:false,
+    API_URL_LOCAL:'https://localhost:7216/v1/',
     API_URL:'https://reportapi.onrender.com/',
 }
