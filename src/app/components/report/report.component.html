@@ -55,13 +55,13 @@
     </div>
     <div class="row secondRow">
       <div class="col-md-4 col-sm-12 columns">
-        <label>Age/Sex*</label>
+        <label>Gender/Sex*</label>
         <input
           type="text"
-          [(ngModel)]="model.age"
+          [(ngModel)]="model.gender"
           name="age"
           class="form-control custom-input"
-          placeholder="Age/Sex"
+          placeholder="Gender/Sex"
           required
         />
         <div class="error" *ngIf="patientForm.controls['age/sex']?.touched && patientForm.controls['age/sex'].errors?.['required']">Age is required</div>

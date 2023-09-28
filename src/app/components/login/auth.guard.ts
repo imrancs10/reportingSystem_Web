@@ -17,10 +17,10 @@ export class AuthGuard implements CanActivate {
     return this.authService.userRole$.pipe(
       map((role:any) => {
         console.log(state.url);
-        if (role === 'admin' || role=='') {
+        if (role === 'Admin') {
           return true; // Allow access for admin
         } 
-        else if(state.url==='/report' && role=='user'){
+        else if(state.url==='/report' && role=='User'){
           return true;
         }
         else {

@@ -9,31 +9,46 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  userType:any='user';
-  username:any='';
-  remeberMe:boolean=false;
-  @ViewChild('loginForm') loginForm!:NgForm
-  constructor(public route:Router,public auth:AuthService){}
+  userType: any = 'user';
+  username: any = '';
+  remeberMe: boolean = false;
+  @ViewChild('loginForm') loginForm!: NgForm
+  constructor(public route: Router, public auth: AuthService) { }
   ngOnInit(): void {
-    if(sessionStorage.getItem('User')){
+    if (sessionStorage.getItem('User')) {
       console.log(sessionStorage.getItem('User'));
-      let val=sessionStorage.getItem('User');
-      this.username=val;
+      let val = sessionStorage.getItem('User');
+      this.username = val;
     }
   }
-  onRadioChange(event:any){
+  onRadioChange(event: any) {
   }
-  
-  onUserLogin(form:NgForm){
-    if(form.invalid) return;
-    if(this.remeberMe){
-      sessionStorage.setItem('User',form.value.username);
+
+  onUserLogin(form: NgForm) {
+    if (form.invalid) return;
+    if (this.remeberMe) {
+      sessionStorage.setItem('User', form.value.username);
     }
-    this.auth.setUserRole('user');
-    this.route.navigate(['/report']);
+    let model = {
+      "UserName": form.value.username,
+      "Password": form.value.Password,
+      "Role": "User"
+    }
+    this.auth.loginUser(model).subscribe((res) => {
+      // console.log(res);
+      //this.pdfUrl = this.getSafeUrl(pdfBlob);
+      //this.onPdfLoad();
+      this.auth.setUserRole('User');
+      this.route.navigate(['/report']);
+    },
+      error => {
+        console.log("Error")
+      });
+
+
     // console.log('userlogin',form.value);
   }
-  onRegister(){
+  onRegister() {
     this.route.navigate(['/register']);
   }
 }

@@ -32,7 +32,7 @@ export class ReportComponent implements OnInit {
     "pneumothorax": "",
     "pneumothoraxSide": "",
     "softTissue": "",
-    "age": "",
+    "gender": "",
     "cavity": "",
     "cavityRegion": "",
     "cavitySide": "",

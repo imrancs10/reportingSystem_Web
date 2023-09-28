@@ -21,7 +21,22 @@ export class AdminDashboardComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.auth.setUserRole('admin');
+    let model = {
+      "UserName": form.value.UserName,
+      "Password": form.value.Password,
+      "Role": "Admin"
+    }
+    this.auth.loginUser(model).subscribe((res) => {
+      // console.log(res);
+      //this.pdfUrl = this.getSafeUrl(pdfBlob);
+      //this.onPdfLoad();
+      this.auth.setUserRole('Admin');
+      this.route.navigate(['/dashboard']);
+    },
+      error => {
+        console.log("Error")
+      });
+   
     // this.route.navigate(['/dashboard']);
     // console.log(form.value);
   }

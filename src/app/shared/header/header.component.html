@@ -7,9 +7,10 @@
         <div class="d-flex">
           <button mat-button [matMenuTriggerFor]="beforeMenu"><mat-icon>manage_accounts</mat-icon></button>
           <mat-menu #beforeMenu="matMenu" xPosition="before">
-            <button mat-raised-button><mat-icon>logout</mat-icon>Logout</button>
+            <!-- <button mat-raised-button><mat-icon>logout</mat-icon>Logout</button> -->
+            <button mat-raised-button type="button" color="accent" (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
           </mat-menu>
-            <!-- <button mat-raised-button type="button" color="accent" (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button> -->
+            <!--  -->
         </div>
     </div>
 </nav>
