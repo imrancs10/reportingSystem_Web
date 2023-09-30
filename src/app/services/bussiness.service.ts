@@ -41,7 +41,7 @@ export class BussinessService {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'
     });
-    return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers: httpHeaders }).pipe(
+    return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers: httpHeaders, responseType: 'blob' }).pipe(
       map(this.extractData),
       catchError(this.handleErrorObservable)
     );

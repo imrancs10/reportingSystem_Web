@@ -250,10 +250,23 @@ export class ReportComponent implements OnInit {
     // }
     this.showPreview = true;
     //this.businessData.savePatientData(patientForm.value);
-    this.businessData.saveDataToDB(this.model).subscribe((res) => {
+    this.businessData.saveDataToDB(this.model).subscribe((response) => {
       // console.log(res);
       //this.pdfUrl = this.getSafeUrl(pdfBlob);
       //this.onPdfLoad();
+      const nav = (window.navigator as any);
+      if (window.navigator && nav.msSaveOrOpenBlob) {
+        var fileName = 'export_file.pdf'
+        /*var fileNameFromHeader = response.headers._headers.toJSON().find(x => x[0] == 'filename');
+        if (fileNameFromHeader.length > 0) {
+            fileName = fileNameFromHeader[1][0];
+        }*/
+        nav.msSaveOrOpenBlob(response, fileName);
+      } else {
+        var objectUrl = URL.createObjectURL(response);
+        window.open(objectUrl); //,'Template.xlsx'
+      }
+      this.showPreview = false;
     },
       error => {
         this.showPreview = false;
