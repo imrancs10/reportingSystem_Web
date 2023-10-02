@@ -9,14 +9,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public route: Router, public auth: AuthService){}
+  constructor(public route: Router, public auth: AuthService) { }
   ngOnInit(): void {
-  
+
   }
 
-  onLogout(){
+  onLogout() {
     this.auth.setUserRole('');
-      this.route.navigate(['/login']);
+    sessionStorage.clear();
+    this.route.navigate(['/login']);
   }
 
 }

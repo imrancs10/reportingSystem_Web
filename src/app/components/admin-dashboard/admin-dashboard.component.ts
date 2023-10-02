@@ -31,7 +31,9 @@ export class AdminDashboardComponent implements OnInit {
       //this.pdfUrl = this.getSafeUrl(pdfBlob);
       //this.onPdfLoad();
       //this.auth.setUserRole('Admin');
+      sessionStorage.setItem('userId', res?.userResponse?.id);
       sessionStorage.setItem('Role', 'Admin');
+      sessionStorage.setItem('userName', form.value.username);
       this.route.navigate(['/dashboard']);
     },
       error => {
