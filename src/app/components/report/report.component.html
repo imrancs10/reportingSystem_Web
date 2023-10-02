@@ -8,7 +8,7 @@
 <div class="container" style="border: 1px solid black">
   <div class="heading">
     <h2 style="display: flex; align-items: center">
-      Patient Information  <mat-icon>info</mat-icon>
+      Patient Information <mat-icon>info</mat-icon>
     </h2>
   </div>
   <hr />
@@ -17,80 +17,70 @@
       <!-- First row with 3 inputs -->
       <div class="col-md-4 col-sm-12 columns">
         <label>Patient Name*</label>
-        <input
-          type="text"
-          required
-          [(ngModel)]="model.fullName"
-          name="FullName"
-          class="form-control custom-input"
-          placeholder="Patient Full Name"
-        />
-        <div class="error" *ngIf="patientForm.controls['FullName']?.touched && patientForm.controls['FullName'].errors?.['required']">Name is required</div>
+        <input type="text" required [(ngModel)]="model.fullName" name="FullName" class="form-control custom-input"
+          placeholder="Patient Full Name" />
+        <div class="error"
+          *ngIf="patientForm.controls['FullName']?.touched && patientForm.controls['FullName'].errors?.['required']">
+          Name is required</div>
       </div>
       <div class="col-md-4 col-sm-12 columns">
-        <label>UHID*</label>
-        <input
-          type="text"
-          required
-          [(ngModel)]="model.uhid"
-          name="uhid"
-          class="form-control custom-input"
-          placeholder="UHID"
-        />
-        <div class="error" *ngIf="patientForm.controls['uhid']?.touched && patientForm.controls['uhid'].errors?.['required']">UHID is required</div>
+        <label>UHID/ID*</label>
+        <input type="text" required [(ngModel)]="model.uhid" name="uhid" class="form-control custom-input"
+          placeholder="UHID" />
+        <div class="error"
+          *ngIf="patientForm.controls['uhid']?.touched && patientForm.controls['uhid'].errors?.['required']">UHID/ID is
+          required</div>
       </div>
-      
+
       <div class="col-md-4 col-sm-12 columns">
         <label>Ref. by*</label>
-        <input
-          type="text"
-          [(ngModel)]="model.refby"
-          name="refby"
-          class="form-control custom-input"
-          placeholder="Ref By"
-          required
-        />
-        <div class="error" *ngIf="patientForm.controls['refby']?.touched && patientForm.controls['refby'].errors?.['required']">Ref By is required</div>
+        <input type="text" [(ngModel)]="model.refby" name="refby" class="form-control custom-input" placeholder="Ref By"
+          required />
+        <div class="error"
+          *ngIf="patientForm.controls['refby']?.touched && patientForm.controls['refby'].errors?.['required']">Ref By is
+          required</div>
       </div>
     </div>
     <div class="row secondRow">
       <div class="col-md-4 col-sm-12 columns">
         <label>Gender/Sex*</label>
-        <input
-          type="text"
-          [(ngModel)]="model.gender"
-          name="age"
-          class="form-control custom-input"
-          placeholder="Gender/Sex"
-          required
-        />
-        <div class="error" *ngIf="patientForm.controls['age/sex']?.touched && patientForm.controls['age/sex'].errors?.['required']">Age is required</div>
+        <select required class="form-select" [(ngModel)]="model.gender" name="gender"
+          aria-label="Default select example">
+          <option value="" disabled selected>Select</option>
+          <option value="Prominent">Male</option>
+          <option value="Normal">Female</option>
+          <option value="Normal">Transgender</option>
+        </select>
+        <div class="error"
+          *ngIf="patientForm.controls['gender']?.touched && patientForm.controls['gender'].errors?.['required']">
+          Gender/Sex
+          is required</div>
       </div>
       <div class="col-md-4 col-sm-12 columns">
         <label>Mobile No.*</label>
-        <input
-          type="number"
-          [(ngModel)]="model.mobileNo"
-          name="mobileNo"
-          class="form-control custom-input"
-          placeholder="+91"
-          required
-        />
-        <div class="error" *ngIf="patientForm.controls['mobileNo']?.touched && patientForm.controls['mobileNo'].errors?.['required']">Mobile is required</div>
+        <input type="number" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="model.mobileNo" name="mobileNo" class="form-control custom-input" 
+          placeholder="+91" required />
+        <div class="error" 
+          *ngIf="patientForm.controls['mobileNo']?.touched && patientForm.controls['mobileNo'].errors?.['required']">
+          Mobile is required</div>
       </div>
       <div class="col-md-4 col-sm-12 columns">
         <label>Date*</label>
-        <input
-          type="date"
-          [(ngModel)]="model.date"
-          name="date"
-          class="form-control custom-input"
-          placeholder="dd/mm/yyyy"
-          [min]="mindate"
-          [max]="maxdate"
-          required
-        />
-        <div class="error" *ngIf="patientForm.controls['date']?.touched && patientForm.controls['date'].errors?.['required']">Date is required</div>
+        <input type="date" [(ngModel)]="model.date" name="date" class="form-control custom-input"
+          placeholder="dd/mm/yyyy" [min]="mindate" [max]="maxdate" required />
+        <div class="error"
+          *ngIf="patientForm.controls['date']?.touched && patientForm.controls['date'].errors?.['required']">Date is
+          required</div>
+      </div>
+    </div>
+    <div class="row thirdRow">
+      <div class="col-md-4 col-sm-12 columns">
+        <label>Age*</label>
+        <input type="text" [(ngModel)]="model.age" name="age" class="form-control custom-input" placeholder="Age"
+          required />
+        <div class="error"
+          *ngIf="patientForm.controls['age']?.touched && patientForm.controls['age'].errors?.['required']">Age is
+          required</div>
       </div>
     </div>
     <hr />
@@ -101,14 +91,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-12 columns">
         <label>Broncho-vascular marking*</label>
-        <select
-          required
-          class="form-select"
-          [(ngModel)]="model.BronchoVascularMarking"
-          name="BronchoVascularMarking"
-          aria-label="Default select example"
-          (change)="onChangeBroncho($event)"
-        >
+        <select required class="form-select" [(ngModel)]="model.BronchoVascularMarking" name="BronchoVascularMarking"
+          aria-label="Default select example" (change)="onChangeBroncho($event)">
           <option value="" disabled selected>Select</option>
           <option value="Prominent">Prominent</option>
           <option value="Normal">Normal</option>
@@ -116,8 +100,8 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openfirst">
         <label>Side*</label>
-        <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.BronchoVascularMarkingSide"
-        name="BronchoVascularMarkingSide">
+        <select class="form-select" required aria-label="Default select example"
+          [(ngModel)]="model.BronchoVascularMarkingSide" name="BronchoVascularMarkingSide">
           <option value="" disabled selected>Select</option>
           <option value="Right">Right</option>
           <option value="Left">Left</option>
@@ -127,8 +111,7 @@
       <div class="col-md-4 col-sm-12 columns" *ngIf="openfirst">
         <label>Region*</label>
         <select class="form-select" required aria-label="Default select example"
-        [(ngModel)]="model.BronchoVascularMarkingRegion"
-        name="BronchoVascularMarkingRegion">
+          [(ngModel)]="model.BronchoVascularMarkingRegion" name="BronchoVascularMarkingRegion">
           <option value="" disabled selected>Select</option>
           <option value="All Zones">All Zones</option>
           <option value="Upper Zone">Upper Zone</option>
@@ -142,14 +125,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-12 columns">
         <label>Opacity*</label>
-        <select
-          required
-          class="form-select"
-          [(ngModel)]="model.opacity"
-          name="opacity"
-          aria-label="Default select example"
-          (change)="onOpacity($event)"
-        >
+        <select required class="form-select" [(ngModel)]="model.opacity" name="opacity"
+          aria-label="Default select example" (change)="onOpacity($event)">
           <option value="" disabled selected>Select</option>
           <option value="Present">Present</option>
           <option value="Absent">Absent</option>
@@ -158,10 +135,8 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openOpacity">
         <label>Please Specify Side*</label>
-        <select class="form-select" aria-label="Default select example"
-        [(ngModel)]="model.opacitySide" required
-        name="opacitySide"
-        >
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="model.opacitySide" required
+          name="opacitySide">
           <option value="" disabled selected>Select</option>
           <option value="Right">Right</option>
           <option value="Left">Left</option>
@@ -170,10 +145,8 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openOpacity">
         <div><label>Please Specify Region*</label></div>
-        <select class="form-select" required aria-label="Default select example"
-        [(ngModel)]="model.opacityRegion"
-        name="opacityRegion"
-          >
+        <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.opacityRegion"
+          name="opacityRegion">
           <option value="" disabled selected>Select</option>
           <option value="All Zone">All Zones</option>
           <option value="Upper Mid Zone">Upper Mid Zone</option>
@@ -190,14 +163,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-12 columns">
         <label>Cavity*</label>
-        <select
-          class="form-select"
-          [(ngModel)]="model.cavity"
-          name="cavity"
-          aria-label="Default select example"
-          (change)="onCavity($event)"
-          required
-        >
+        <select class="form-select" [(ngModel)]="model.cavity" name="cavity" aria-label="Default select example"
+          (change)="onCavity($event)" required>
           <option value="" disabled selected>Select</option>
           <option value="Present">Present</option>
           <option value="Absent">Absent</option>
@@ -206,10 +173,8 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openCavity">
         <label>Please Specify Side*</label>
-        <select class="form-select" required aria-label="Default select example"
-        [(ngModel)]="model.cavitySide"
-        name="cavitySide"
-        >
+        <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.cavitySide"
+          name="cavitySide">
           <option value="" disabled selected>Select</option>
           <option value="Right">Right</option>
           <option value="Left">Left</option>
@@ -218,9 +183,8 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openCavity">
         <div><label>Please Specify Region*</label></div>
-        <select class="form-select"  required aria-label="Default select example"
-        [(ngModel)]="model.cavityRegion"
-        name="cavityRegion">
+        <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.cavityRegion"
+          name="cavityRegion">
           <option value="" disabled selected>Select</option>
           <option value="Upper Mid Zone">Upper Mid Zone</option>
           <option value="Lower Mid Zone">Lower Mid Zone</option>
@@ -236,14 +200,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-12 columns">
         <label>Masses*</label>
-        <select
-          class="form-select"
-          [(ngModel)]="model.masses"
-          name="masses"
-          aria-label="Default select example"
-          (change)="onMasses($event)"
-          required
-        >
+        <select class="form-select" [(ngModel)]="model.masses" name="masses" aria-label="Default select example"
+          (change)="onMasses($event)" required>
           <option value="" disabled selected>Select</option>
           <option value="Present">Present</option>
           <option value="Absent">Absent</option>
@@ -253,7 +211,7 @@
       <div class="col-md-4 col-sm-12 columns" *ngIf="openMasses">
         <label>Please Specify Side*</label>
         <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.massesSide"
-        name="massesSide" >
+          name="massesSide">
           <option value="" disabled selected>Select</option>
           <option value="Right">Right</option>
           <option value="Left">Left</option>
@@ -263,7 +221,7 @@
       <div class="col-md-4 col-sm-12 columns" *ngIf="openMasses">
         <div><label>Please Specify Region*</label></div>
         <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.massesRegion"
-        name="massesRegion">
+          name="massesRegion">
           <option value="" disabled selected>Select</option>
           <option value="All Zones">All Zones</option>
           <option value="Both Upper and Lower zone">Both Upper and Lower zone</option>
@@ -294,28 +252,22 @@
 
     <!--Hilum-->
     <div class="row">
-        <div><label>Hilum*</label></div>
-        <div class="col-md-4 col-sm-12 columns">      
-          <div><label>Please Specify Hilum Side*</label></div>
-          <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.hilumSide"
+      <div><label>Hilum*</label></div>
+      <div class="col-md-4 col-sm-12 columns">
+        <div><label>Please Specify Hilum Side*</label></div>
+        <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.hilumSide"
           name="hilumSide">
-            <option value="" disabled selected>Select</option>
-            <option value="Right">Right</option>
-            <option value="Left">Left</option>
-            <option value="Bilateral">Bilateral</option>
-          </select>
-        
+          <option value="" disabled selected>Select</option>
+          <option value="Right">Right</option>
+          <option value="Left">Left</option>
+          <option value="Bilateral">Bilateral</option>
+        </select>
+
       </div>
       <div class="col-md-4 col-sm-12 columns">
         <label>Please Specify Hilum*</label>
-        <select
-          class="form-select"
-          [(ngModel)]="model.hilum"
-          name="hilum"
-          aria-label="Default select example"
-          (change)="onHilum($event)"
-          required
-        >
+        <select class="form-select" [(ngModel)]="model.hilum" name="hilum" aria-label="Default select example"
+          (change)="onHilum($event)" required>
           <option value="" disabled selected>Select</option>
           <option value="Normal">Normal</option>
           <option value="Prominent">Prominent</option>
@@ -323,12 +275,12 @@
       </div>
       <div class="col-md-4 col-sm-12 columns" *ngIf="openHilum">
         <label>Please Specify Prominent Hilum*</label>
-        <select class="form-select" required [(ngModel)]="model.ProminentHilumSpecify"
-        name="ProminentHilumSpecify" aria-label="Default select example" >
-        <option value="" disabled selected>Select</option>
-        <option value="Hilar Adenopathy">Hilar Adenopathy</option>
-        <option value="Vascular Prominence">Vascular Prominence</option>
-        <option value="Nil">Nil</option>
+        <select class="form-select" required [(ngModel)]="model.ProminentHilumSpecify" name="ProminentHilumSpecify"
+          aria-label="Default select example">
+          <option value="" disabled selected>Select</option>
+          <option value="Hilar Adenopathy">Hilar Adenopathy</option>
+          <option value="Vascular Prominence">Vascular Prominence</option>
+          <option value="Nil">Nil</option>
         </select>
       </div>
     </div>
@@ -341,14 +293,8 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Trachea*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.trachea"
-            name="trachea"
-            aria-label="Default select example"
-            (change)="onTrachea($event)"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.trachea" name="trachea" aria-label="Default select example"
+            (change)="onTrachea($event)" required>
             <option value="" disabled selected>Select</option>
             <option value="Central">Central</option>
             <option value="Shift">Shift</option>
@@ -356,8 +302,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openTrachea">
           <label>Shift Side*</label>
-          <select class="form-select" required [(ngModel)]="model.tracheaShiftSide"
-          name="tracheaShiftSide" aria-label="Default select example" >
+          <select class="form-select" required [(ngModel)]="model.tracheaShiftSide" name="tracheaShiftSide"
+            aria-label="Default select example">
             <option value="" disabled selected>Select</option>
             <option value="Right">Shifted towards Right</option>
             <option value="Left">Shifted towards Left</option>
@@ -369,14 +315,8 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Mediastinal*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.mediastinal"
-            name="mediastinal"
-            aria-label="Default select example"
-            (change)="onMediastinal($event)"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.mediastinal" name="mediastinal"
+            aria-label="Default select example" (change)="onMediastinal($event)" required>
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Shift">Shifted</option>
@@ -387,8 +327,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openMedia">
           <label>Shift Side*</label>
-          <select class="form-select" required [(ngModel)]="model.mediastinalShiftSide"
-          name="mediastinalShiftSide" aria-label="Default select example" >
+          <select class="form-select" required [(ngModel)]="model.mediastinalShiftSide" name="mediastinalShiftSide"
+            aria-label="Default select example">
             <option value="" disabled selected>Select</option>
             <option value="right">Shifted towards Right</option>
             <option value="left">Shifted towards Left</option>
@@ -399,13 +339,8 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Lymph Nodes*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.LymphNodes"
-            name="LymphNodes"
-            aria-label="Default select example"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.LymphNodes" name="LymphNodes"
+            aria-label="Default select example" required>
             <option value="" disabled selected>Select</option>
             <option value="Enlarged">Enlarged</option>
             <option value="Nil">Nil</option>
@@ -421,31 +356,19 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Cardiac Size*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.CardiacSize"
-            name="CardiacSize"
-            aria-label="Default select example"
-            (change)="onCardiacSizeChanged($event)"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.CardiacSize" name="CardiacSize"
+            aria-label="Default select example" (change)="onCardiacSizeChanged($event)" required>
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Enlarged">Enlarged</option>
             <option value="Nil">Nil</option>
           </select>
         </div>
-        
+
         <div class="col-md-4 col-sm-12 columns">
           <label>Cardiac shape*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.CardiacShape"
-            name="CardiacShape"
-            aria-label="Default select example"
-            (change)="onCardicShapeAbnormal($event)"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.CardiacShape" name="CardiacShape"
+            aria-label="Default select example" (change)="onCardicShapeAbnormal($event)" required>
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Abnormal">Abnormal</option>
@@ -455,13 +378,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openCardic">
           <label>Please Specify Cardiac Shape Abnormal*</label>
-          <select
-            class="form-select"
-            [(ngModel)]="model.CardiacShapeAbnormal"
-            name="CardiacShapeAbnormal"
-            aria-label="Default select example"
-            required
-          >
+          <select class="form-select" [(ngModel)]="model.CardiacShapeAbnormal" name="CardiacShapeAbnormal"
+            aria-label="Default select example" required>
             <option value="" disabled selected>Select</option>
             <option value="Tubular">Tubular</option>
             <option value="Globular">Globular</option>
@@ -475,13 +393,8 @@
         <!--Aortic-->
         <div class="col-md-4 col-sm-12 columns">
           <label>Aortic Knuckle*</label>
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            [(ngModel)]="model.AorticKnuckle"
-            name="AorticKnuckle"
-            required
-          >
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="model.AorticKnuckle"
+            name="AorticKnuckle" required>
             <option value="" disabled selected>Select</option>
             <option value="Present">Present</option>
             <option value="Nil">Nil</option>
@@ -489,13 +402,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns">
           <label>Aortic Knuckle Calcification*</label>
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            [(ngModel)]="model.AorticKnuckleCalcification"
-            name="AorticKnuckleCalcification"
-            required
-          >
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="model.AorticKnuckleCalcification"
+            name="AorticKnuckleCalcification" required>
             <option value="" disabled selected>Select</option>
             <option value="Present">Present</option>
             <option value="Nil">Nil</option>
@@ -503,20 +411,15 @@
         </div>
         <div class="col-md-4 col-sm-12 columns">
           <label>Aortic Knuckle Unfolding of Aorta*</label>
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            [(ngModel)]="model.AorticKnuckleUnfoldingofAorta"
-            name="AorticKnuckleUnfoldingofAorta"
-            required
-          >
+          <select class="form-select" aria-label="Default select example"
+            [(ngModel)]="model.AorticKnuckleUnfoldingofAorta" name="AorticKnuckleUnfoldingofAorta" required>
             <option value="" disabled selected>Select</option>
             <option value="Present">Present</option>
             <option value="Nil">Nil</option>
           </select>
         </div>
       </div>
-      
+
     </div>
     <hr>
     <div>
@@ -528,9 +431,9 @@
         <div><label>Costophrenic Angles*</label></div>
         <div class="checkout"></div>
         <div class="col-md-4 col-sm-12 columns">
-          <label>Please Specify  Side*</label>
-          <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.CostophrenicAnglesSide"
-          name="CostophrenicAnglesSide">
+          <label>Please Specify Side*</label>
+          <select class="form-select" required aria-label="Default select example"
+            [(ngModel)]="model.CostophrenicAnglesSide" name="CostophrenicAnglesSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -539,34 +442,22 @@
         </div>
         <div class="col-md-4 col-sm-12 columns">
           <label>Please Specify Costophrenic Angles*</label>
-          <select
-            required
-            class="form-select"
-            [(ngModel)]="model.CostophrenicAngles"
-            name="CostophrenicAngles"
-            aria-label="Default select example"
-            (change)="onCostophrenicAngles($event)"
-          >
+          <select required class="form-select" [(ngModel)]="model.CostophrenicAngles" name="CostophrenicAngles"
+            aria-label="Default select example" (change)="onCostophrenicAngles($event)">
             <option value="" disabled selected>Select</option>
             <option value="Blunt">Blunt</option>
             <option value="Normal">Normal</option>
             <option value="Obscured">Obscured</option>
           </select>
         </div>
-        
+
       </div>
       <!--Pneumothorax-->
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Pneumothorax*</label>
-          <select
-            required
-            class="form-select"
-            aria-label="Default select example"
-            [(ngModel)]="model.Pneumothorax"
-            name="Pneumothorax"
-            (change)="onPneumothorax($event)"
-          >
+          <select required class="form-select" aria-label="Default select example" [(ngModel)]="model.Pneumothorax"
+            name="Pneumothorax" (change)="onPneumothorax($event)">
             <option value="" disabled selected>Select</option>
             <option value="Present">Present</option>
             <option value="Nil">Nil</option>
@@ -575,7 +466,7 @@
         <div class="col-md-4 col-sm-12 columns" *ngIf="openPneumothorax">
           <label>Please Specify Side*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.PneumothoraxSide"
-          name="PneumothoraxSide">
+            name="PneumothoraxSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -591,14 +482,8 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Bony Cage*</label>
-          <select
-            required
-            class="form-select"
-            [(ngModel)]="model.BonyCage"
-            name="BonyCage"
-            aria-label="Default select example"
-            (change)="onBonyCage($event)"
-          >
+          <select required class="form-select" [(ngModel)]="model.BonyCage" name="BonyCage"
+            aria-label="Default select example" (change)="onBonyCage($event)">
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Abnormal">Abnormal</option>
@@ -608,7 +493,7 @@
         <div class="col-md-4 col-sm-12 columns" *ngIf="openBonyCage">
           <label>Please Specify Side*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.BonyCageSide"
-          name="BonyCageSide">
+            name="BonyCageSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -619,7 +504,7 @@
         <div class="col-md-4 col-sm-12 columns" *ngIf="openBonyCage">
           <label>Finding*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.Finding"
-          name="Finding" (change)="onFinding($event)">
+            name="Finding" (change)="onFinding($event)">
             <option value="" disabled selected>Select</option>
             <option value="Fracture">Fracture</option>
             <option value="Bony Lesion">Bony Lesion</option>
@@ -632,7 +517,7 @@
         <div class="col-md-4 col-sm-12 columns" *ngIf="openbony">
           <label>Specify Bony lesion*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.Bonylesion"
-          name="Bonylesion">
+            name="Bonylesion">
             <option value="" disabled selected>Select</option>
             <option value="lytic">Lytic</option>
             <option value="blastic">Blastic</option>
@@ -641,7 +526,7 @@
         <div class="col-md-4 col-sm-12 columns" *ngIf="fracture">
           <label>Specify Fracture*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.FractureSide"
-          name="FractureSide">
+            name="FractureSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -649,39 +534,25 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="fracture || ribnumber">
           <label>Specify Fracture Rib Number*</label>
-          <input
-          [(ngModel)]="model.FractureRibNumber"
-            name="FractureRibNumber"
-          type="number"
-          required
-          minlength="1"
-          maxlength="2"
-          class="form-control custom-input"
-          placeholder="Number Between 1 - 12"
-        />
+          <input [(ngModel)]="model.FractureRibNumber" name="FractureRibNumber" type="number" required minlength="1"
+            maxlength="2" class="form-control custom-input" placeholder="Number Between 1 - 12" />
         </div>
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Soft Tissue*</label>
-          <select
-            required
-            class="form-select"
-            [(ngModel)]="model.SoftTissue"
-            name="SoftTissue"
-            aria-label="Default select example"
-            (change)="onSoftTissue($event)"
-          >
+          <select required class="form-select" [(ngModel)]="model.SoftTissue" name="SoftTissue"
+            aria-label="Default select example" (change)="onSoftTissue($event)">
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Abnormal">Abnormal</option>
-            
+
           </select>
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openSoftTissue">
           <label>Please Specify Side*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.SoftTissueSide"
-          name="SoftTissueSide">
+            name="SoftTissueSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -690,8 +561,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openSoftTissue">
           <label>Please Specify Soft Tissue Abnormal*</label>
-          <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.SoftTissueAbnormal"
-          name="SoftTissueAbnormal">
+          <select class="form-select" required aria-label="Default select example"
+            [(ngModel)]="model.SoftTissueAbnormal" name="SoftTissueAbnormal">
             <option value="" disabled selected>Select</option>
             <option value="Swelling">Swelling</option>
             <option value="Calcification">Calcification</option>
@@ -708,7 +579,7 @@
         <div class="col-md-4 col-sm-12 columns">
           <label>Please Specify Side*</label>
           <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.HemiDiaphragmSide"
-          name="HemiDiaphragmSide">
+            name="HemiDiaphragmSide">
             <option value="" disabled selected>Select</option>
             <option value="Right">Right</option>
             <option value="Left">Left</option>
@@ -717,14 +588,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns">
           <div><label>Please Specify Hemi Diaphragm*</label></div>
-          <select
-            required
-            class="form-select"
-            [(ngModel)]="model.HemiDiaphragm"
-            name="HemiDiaphragm"
-            aria-label="Default select example"
-            (change)="onDiaphragm($event)"
-          >
+          <select required class="form-select" [(ngModel)]="model.HemiDiaphragm" name="HemiDiaphragm"
+            aria-label="Default select example" (change)="onDiaphragm($event)">
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Abnormal">Abnormal</option>
@@ -733,8 +598,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openDiaphragm">
           <label>Please Specify Hime Diaphragm Abormal*</label>
-          <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.HemiDiaphragmAbormal"
-          name="HemiDiaphragmAbormal">
+          <select class="form-select" required aria-label="Default select example"
+            [(ngModel)]="model.HemiDiaphragmAbormal" name="HemiDiaphragmAbormal">
             <option value="" disabled selected>Select</option>
             <option value="Elevated">Elevated</option>
             <option value="Depressed">Depressed</option>
@@ -742,21 +607,15 @@
             <option value="Hump">Hump</option>
           </select>
         </div>
-        
+
       </div>
 
       <!--Breast Shadow-->
       <div class="row">
         <div class="col-md-4 col-sm-12 columns">
           <label>Breast Shadow*</label>
-          <select
-            required
-            class="form-select"
-            [(ngModel)]="model.BreastShadow"
-            name="BreastShadow"
-            aria-label="Default select example"
-            (change)="onBreastShadow($event)"
-          >
+          <select required class="form-select" [(ngModel)]="model.BreastShadow" name="BreastShadow"
+            aria-label="Default select example" (change)="onBreastShadow($event)">
             <option value="" disabled selected>Select</option>
             <option value="Normal">Normal</option>
             <option value="Abnormal">Abnormal</option>
@@ -765,8 +624,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openBreastShadow">
           <label>Please Specify Side*</label>
-          <select class="form-select"  required aria-label="Default select example" [(ngModel)]="model.BreastShadowSide"
-          name="BreastShadowSide">
+          <select class="form-select" required aria-label="Default select example" [(ngModel)]="model.BreastShadowSide"
+            name="BreastShadowSide">
             <option value="" disabled selected>Select</option>
             <option value="right">Right</option>
             <option value="left">Left</option>
@@ -775,8 +634,8 @@
         </div>
         <div class="col-md-4 col-sm-12 columns" *ngIf="openBreastShadow">
           <label>Please Specify Breast Shadow Abnormal*</label>
-          <select class="form-select"  required aria-label="Default select example" [(ngModel)]="model.BreastShadowAbnormal"
-          name="BreastShadowAbnormal">
+          <select class="form-select" required aria-label="Default select example"
+            [(ngModel)]="model.BreastShadowAbnormal" name="BreastShadowAbnormal">
             <option value="" disabled selected>Select</option>
             <option value="Swelling">Swelling</option>
             <option value="Calcification">Calcification</option>
@@ -796,7 +655,8 @@
       </div>
     </div> -->
     <div class="btns">
-      <button mat-raised-button (click)="onReset()" type="reset" style="margin-right: 10px;">Reset<mat-icon>autorenew</mat-icon></button>
+      <button mat-raised-button (click)="onReset()" type="reset"
+        style="margin-right: 10px;">Reset<mat-icon>autorenew</mat-icon></button>
       <button mat-raised-button color="primary" type="submit">Proceed<mat-icon>done</mat-icon></button>
       <hr>
     </div>
@@ -809,4 +669,3 @@
     <app-footer></app-footer>
   </div>
 </div>
-

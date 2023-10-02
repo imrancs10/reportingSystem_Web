@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
       //this.pdfUrl = this.getSafeUrl(pdfBlob);
       //this.onPdfLoad();
       this.auth.setUserRole('User');
+      sessionStorage.setItem('Role', 'User');
       this.route.navigate(['/report']);
     },
       error => {

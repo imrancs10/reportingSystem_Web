@@ -8,19 +8,20 @@ import { AuthService } from 'src/app/services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.userRole$.pipe(
-      map((role:any) => {
+      map((role: any) => {
+        let currentUserRole = sessionStorage.getItem('Role');
         console.log(state.url);
-        if (role === 'Admin') {
+        if (currentUserRole === 'Admin') {
           return true; // Allow access for admin
-        } 
-        else if(state.url==='/report' && role=='User'){
+        }
+        else if (state.url === '/report' && currentUserRole == 'User') {
           return true;
         }
         else {
