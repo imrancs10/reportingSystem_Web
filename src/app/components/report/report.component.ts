@@ -12,7 +12,7 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
 })
 export class ReportComponent implements OnInit {
   model: any = {
-    "mobileNo": 0,
+    "mobileNo": null,
     "gender": "",
     "age": "",
     "CardiacShape": "",
@@ -43,7 +43,7 @@ export class ReportComponent implements OnInit {
     "HemiDiaphragmAbormal": "",
     "SoftTissue": "",
     "SoftTissueSide": "",
-    "FractureRibNumber": 0,
+    "FractureRibNumber": null,
     "Bonylesion": "",
     "FractureSide": "",
     "Finding": "",
