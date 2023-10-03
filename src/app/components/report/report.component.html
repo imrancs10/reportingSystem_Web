@@ -47,9 +47,9 @@
         <select required class="form-select" [(ngModel)]="model.gender" name="gender"
           aria-label="Default select example">
           <option value="" disabled selected>Select</option>
-          <option value="Prominent">Male</option>
-          <option value="Normal">Female</option>
-          <option value="Normal">Transgender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Transgender">Transgender</option>
         </select>
         <div class="error"
           *ngIf="patientForm.controls['gender']?.touched && patientForm.controls['gender'].errors?.['required']">
