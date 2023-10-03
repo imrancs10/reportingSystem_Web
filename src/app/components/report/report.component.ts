@@ -60,7 +60,8 @@ export class ReportComponent implements OnInit {
     "AorticKnuckleCalcification": "",
     "AorticKnuckleUnfoldingofAorta": "",
     "SoftTissueAbnormal": "",
-    "BreastShadowAbnormal": ""
+    "BreastShadowAbnormal": "",
+    "orgLogoName": ""
   };
 
   @ViewChild('patientForm') patientForm!: NgForm;
@@ -260,6 +261,7 @@ export class ReportComponent implements OnInit {
       return
     }
     this.showPreview = true;
+    this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
     //this.businessData.savePatientData(patientForm.value);
     this.businessData.saveDataToDB(this.model).subscribe((response) => {
       // console.log(res);
