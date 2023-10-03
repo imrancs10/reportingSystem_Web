@@ -97,7 +97,7 @@ export class BussinessService {
     // Create a download link
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'data.csv';
+    link.download = 'Patient_Report.csv';
     link.click();
     window.URL.revokeObjectURL(url);
   }
