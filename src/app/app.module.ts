@@ -9,11 +9,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './shared/alert/alert.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { SharedModule } from './shared/shared.module';
 import { TokenInterceptorService } from './TokenInterceptorService';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { TokenInterceptorService } from './TokenInterceptorService';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    AgGridModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, 

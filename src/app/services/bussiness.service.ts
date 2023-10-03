@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { setup } from './setup';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 @Injectable({
   providedIn: 'root'
 })
@@ -54,7 +55,7 @@ export class BussinessService {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'
     });
-    return this.http.post(this.apiUrl + 'Auth/user/orgregister', model, { headers: httpHeaders}).pipe(
+    return this.http.post(this.apiUrl + 'Auth/user/orgregister', model, { headers: httpHeaders }).pipe(
       map(this.extractData),
       catchError(this.handleErrorObservable)
     );
@@ -62,8 +63,8 @@ export class BussinessService {
     // return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers });
   }
 
-  getAllDataFromDB() {
-    return this.http.get(this.apiUrl + 'medical-data/');
+  getAllDataFromDB(): Observable<any> {
+    return this.http.get(this.apiUrl + 'PatientReport/get/patientReport/');
   }
   private extractData(res: any) {
     let body = res;
