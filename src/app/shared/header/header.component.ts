@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
   openOrganizationPage() {
     this.route.navigate(['/organization']);
   }
+  openDashboardPage(){
+    this.route.navigate(['/dashboard']);
+  }
   onLogout() {
     this.auth.setUserRole('');
     sessionStorage.clear();
