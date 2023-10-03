@@ -11,13 +11,17 @@ import { TermsconditionComponent } from 'src/app/shared/termscondition/termscond
   styleUrls: ['./user-register.component.scss']
 })
 export class UserRegisterComponent implements OnInit {
+  file: any;
   @ViewChild('registerForm') registerForm!: NgForm
   termsCondition: boolean = false;
   constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService) { }
   ngOnInit(): void {
     this.termsCondition = false;
   }
-
+  onFilechange(event: any) {
+    console.log(event.target.files[0])
+    this.file = event.target.files[0]
+  }
   onClick(form: NgForm) {
     if (!this.termsCondition || form.invalid) return;
     //logic for generate the UserName by Raghav Garg 
@@ -35,19 +39,27 @@ export class UserRegisterComponent implements OnInit {
       "Mobile": form.value.phone,
       "username": username,
       "Password": pass,
-      "LogoFileName": ""
+      "LogoFileName": this.file.name,
+      "LogoBase64": ""
     }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.onload = () => {
+      console.log(reader.result);
+      body.LogoBase64 = typeof (reader.result) == 'string' ? reader.result : "";
+      this.businessData.registerUser(body).subscribe((response) => {
+        // console.log(res);
+        // this.pdfUrl = this.getSafeUrl(response);
+        // this.onPdfLoad();
+        //this.showPreview = false;
+      },
+        error => {
+          // this.showPreview = false;
+          // this.openDialog('pdfError');
+        });
+    };
     // console.log(body);
-    this.businessData.registerUser(body).subscribe((response) => {
-      // console.log(res);
-      // this.pdfUrl = this.getSafeUrl(response);
-      // this.onPdfLoad();
-      //this.showPreview = false;
-    },
-      error => {
-        // this.showPreview = false;
-        // this.openDialog('pdfError');
-      });
+
     //data save table main  and navigate home
     //this.onLogin();
   }

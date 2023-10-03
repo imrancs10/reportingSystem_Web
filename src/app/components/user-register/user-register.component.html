@@ -8,9 +8,9 @@
                 <p>
                     Kindly fill all Required <b>*</b> fields
                 </p>
-                <form (ngSubmit)="onClick(registerForm)" #registerForm="ngForm">
+                <form (ngSubmit)="onClick(registerForm)" #registerForm="ngForm" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <label>Organization Name* :</label>
                             <input type="text" required ngModel name="organization_name" class="form-control custom-input"
                                 placeholder="Organization Name" autocomplete="off" />
@@ -19,7 +19,7 @@
                                 Name is required
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <label>Organization Email * :</label>
                             <input type="email" required ngModel name="gmail" class="form-control custom-input"
                                 placeholder="Please Enter Email" autocomplete="off" />
@@ -30,6 +30,16 @@
                             <div class="error"
                                 *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['email']">
                                 Email is Invalid
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label>Organization Logo * :</label>
+                            <input (change)="this.onFilechange($event)" required ngModel name="logo" class="form-control custom-input" type="file" id="formFile" placeholder="Please Enter Department logo" >
+                            <!-- <input type="file" required ngModel name="logo" class="form-control custom-input"
+                                placeholder="Please Enter Department logo" /> -->
+                            <div class="error"
+                                *ngIf="registerForm.controls['logo']?.touched && registerForm.controls['logo'].errors?.['required']">
+                                Logo is required
                             </div>
                         </div>
                     </div>
