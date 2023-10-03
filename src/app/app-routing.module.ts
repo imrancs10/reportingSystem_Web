@@ -9,6 +9,13 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+  {
+    path: 'organization',
+    loadChildren: () =>
+      import('./components/organization/organization.module').then(
+        (m) => m.OrganizationModule
+      ),
+  },
   // {
   //   path: 'home',
   //   loadChildren: () =>

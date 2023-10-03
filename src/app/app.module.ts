@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { TokenInterceptorService } from './TokenInterceptorService';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { OrganizationComponent } from './components/organization/organization.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AgGridModule } from 'ag-grid-angular';
     DashboardComponent,
     AdminDashboardComponent,
     UserRegisterComponent,
+    OrganizationComponent
   ],
   imports: [
     BrowserModule,

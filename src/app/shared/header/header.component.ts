@@ -13,7 +13,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isAdminLogin = sessionStorage.getItem('Role') == 'Admin';
   }
-
+  openOrganizationPage() {
+    this.route.navigate(['/organization']);
+  }
   onLogout() {
     this.auth.setUserRole('');
     sessionStorage.clear();

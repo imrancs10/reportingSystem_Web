@@ -1,0 +1,42 @@
+<div>
+  <app-header></app-header>
+</div>
+<div class="wrapper">
+  <div class="line"></div>
+  <div class="card">
+    <h2 class="card-header" style="background-color: rgb(144, 144, 163); text-align: center">
+      Organization Detail
+    </h2>
+  </div>
+  <div class="content">
+    <div class="container">
+      <div class="row" style="margin-bottom: 10px;margin-left: 3px;">
+        <button mat-raised-button (click)="exportData()" color="primary" style="width: 100px;float: right;">
+          <mat-icon>download</mat-icon>Export
+        </button>
+      </div>
+      <div class="row">
+        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [rowData]="rowData"
+          [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [pagination]="true"
+          [paginationPageSize]="10"></ag-grid-angular>
+      </div>
+      <!-- <div>
+        <h1 style="text-align: center; text-decoration: underline;">Welcome Back Admin!</h1>
+        <h3>Export all the Patients data in CSV fromat by clicking the Download button.</h3>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="termsCondition">
+        <label class="form-check-label" for="flexCheckChecked">
+          Agree to Terms and Condition
+        </label>
+      </div>
+      <div style="padding: 10px 0px;">
+        <button [disabled]="!termsCondition" mat-raised-button (click)="onGetAllData()" color="primary">
+          <mat-icon>download</mat-icon>Download Data
+        </button>
+      </div> -->
+      <!-- {{termsCondition}} -->
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
