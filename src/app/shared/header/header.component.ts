@@ -8,10 +8,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  isAdminLogin: boolean = false;
   constructor(public route: Router, public auth: AuthService) { }
   ngOnInit(): void {
-
+    this.isAdminLogin = sessionStorage.getItem('Role') == 'Admin';
   }
 
   onLogout() {
