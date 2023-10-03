@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BussinessService } from 'src/app/services/bussiness.service';
 import { TermsconditionComponent } from 'src/app/shared/termscondition/termscondition.component';
+import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
 @Component({
   selector: 'app-user-register',
@@ -12,6 +13,7 @@ import { TermsconditionComponent } from 'src/app/shared/termscondition/termscond
 })
 export class UserRegisterComponent implements OnInit {
   file: any;
+  showPreview: boolean = false;
   @ViewChild('registerForm') registerForm!: NgForm
   termsCondition: boolean = false;
   constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService) { }
@@ -23,6 +25,7 @@ export class UserRegisterComponent implements OnInit {
     this.file = event.target.files[0]
   }
   onClick(form: NgForm) {
+    this.showPreview = true;
     if (!this.termsCondition || form.invalid) return;
     //logic for generate the UserName by Raghav Garg 
     let name = form.value.fname[0] + form.value.lname[0];
@@ -45,17 +48,18 @@ export class UserRegisterComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(this.file);
     reader.onload = () => {
-      console.log(reader.result);
+      //console.log(reader.result);
       body.LogoBase64 = typeof (reader.result) == 'string' ? reader.result : "";
       this.businessData.registerUser(body).subscribe((response) => {
         // console.log(res);
         // this.pdfUrl = this.getSafeUrl(response);
         // this.onPdfLoad();
-        //this.showPreview = false;
+        this.openMessageDialog("Successfully saved");
+        this.showPreview = false;
       },
         error => {
-          // this.showPreview = false;
-          // this.openDialog('pdfError');
+           this.showPreview = false;
+          this.openMessageDialog("Some Went Happen");
         });
     };
     // console.log(body);
@@ -78,5 +82,18 @@ export class UserRegisterComponent implements OnInit {
       else this.termsCondition = false;
     });
   }
-
+  iframe: any;
+  openMessageDialog(mesg: any) {
+    let dialogRef = this.dialog.open(AlertComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { msg: mesg },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'reset') {
+        document.body.removeChild(this.iframe);
+        //this.onReset();
+      }
+    });
+  }
 }
