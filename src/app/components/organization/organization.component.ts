@@ -16,14 +16,15 @@ export class OrganizationComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.columnDefs = [
-      { headerName: "Full Name", field: "fullName" },
-      { headerName: "UHID/Patient ID", field: "uhid" },
-      { headerName: "Ref By", field: "refby" },
-      { headerName: "Gender", field: "gender" },
-      { headerName: "Age", field: "age" },
-      { headerName: "Mobile No", field: "mobileNo" },
-      { headerName: "Date", field: "date" },
-      // Add more columns as needed
+      { headerName: "Orgnization Name", field: "name" },
+      { headerName: "Email", field: "email" },
+      { headerName: "First Name", field: "firstName" },
+      { headerName: "Last Name", field: "lastName" },
+      { headerName: "Mobile", field: "mobile" },
+      { headerName: "State", field: "state" },
+      { headerName: "City", field: "city" },
+      { headerName: "PinCode", field: "pinCode" },
+      { headerName: "Password", field: "password" },
     ];
 
     this.defaultColDef = {
@@ -34,7 +35,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   onGetAllData() {
-    this.businessData.getAllDataFromDB().subscribe((res) => {
+    this.businessData.getAOrgDataFromDB().subscribe((res) => {
       this.rowData = res;
       // this.rowData = [
       //   { name: "Task 1", start_date: "2023-05-29 06:00:00", end_date: "2023-06-20 06:00:00" },
@@ -45,6 +46,6 @@ export class OrganizationComponent implements OnInit {
     });
   }
   exportData() {
-    this.businessData.downloadCSV(this.rowData);
+    this.businessData.downloadCSV(this.rowData, "organization_detail");
   }
 }

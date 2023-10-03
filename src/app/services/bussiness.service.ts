@@ -62,7 +62,9 @@ export class BussinessService {
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers });
   }
-
+  getAOrgDataFromDB(): Observable<any> {
+    return this.http.get(this.apiUrl + 'Auth/get/organizationDetail/');
+  }
   getAllDataFromDB(): Observable<any> {
     return this.http.get(this.apiUrl + 'PatientReport/get/patientReport/');
   }
@@ -79,7 +81,7 @@ export class BussinessService {
     return throwError('Something went wrong; please try again later.');
   }
 
-  downloadCSV(data: any) {
+  downloadCSV(data: any, fileName: any) {
     if (!data) {
       console.error('No data to download.');
       return;
@@ -97,7 +99,7 @@ export class BussinessService {
     // Create a download link
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'Patient_Report.csv';
+    link.download = fileName + '.csv';
     link.click();
     window.URL.revokeObjectURL(url);
   }

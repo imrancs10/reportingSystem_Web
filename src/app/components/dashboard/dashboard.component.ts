@@ -45,6 +45,6 @@ export class DashboardComponent implements OnInit {
     });
   }
   exportData() {
-    this.businessData.downloadCSV(this.rowData);
+    this.businessData.downloadCSV(this.rowData,'Patient_Report');
   }
 }
