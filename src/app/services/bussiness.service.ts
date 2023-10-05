@@ -62,6 +62,20 @@ export class BussinessService {
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers });
   }
+
+  sendEmailtoOrganization(model: any): Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    return this.http.post(this.apiUrl + 'Auth/user/sendEmail', model, { headers: httpHeaders }).pipe(
+      map(this.extractData),
+      catchError(this.handleErrorObservable)
+    );
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // return this.http.post(this.apiUrl + 'PatientReport/add/ReportingSystem', model, { headers });
+  }
+
   getAOrgDataFromDB(): Observable<any> {
     return this.http.get(this.apiUrl + 'Auth/get/organizationDetail/');
   }

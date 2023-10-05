@@ -15,14 +15,14 @@ import { AlertService } from '../../_alert/alert.service';
 })
 export class UserRegisterComponent implements OnInit {
   options = {
-    autoClose: false,
+    autoClose: true,
     keepAfterRouteChange: false
-};
+  };
   file: any;
   showPreview: boolean = false;
   @ViewChild('registerForm') registerForm!: NgForm
   termsCondition: boolean = false;
-  constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService,protected alertService: AlertService) { }
+  constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService, protected alertService: AlertService) { }
   ngOnInit(): void {
     this.termsCondition = false;
   }
@@ -66,8 +66,8 @@ export class UserRegisterComponent implements OnInit {
         form.reset();
       },
         error => {
-           this.showPreview = false;
-           this.alertService.error('Error Happens, please contact administrator', this.options);
+          this.showPreview = false;
+          this.alertService.error('Error happens, please contact administrator', this.options);
           //this.openMessageDialog("Some Went Happen");
         });
     };

@@ -18,7 +18,7 @@
       <div class="row">
         <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [rowData]="rowData"
           [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [pagination]="true"
-          [paginationPageSize]="10"></ag-grid-angular>
+          [paginationPageSize]="10" (rowClicked)='onRowClicked($event)'></ag-grid-angular>
       </div>
       <!-- <div>
         <h1 style="text-align: center; text-decoration: underline;">Welcome Back Admin!</h1>
@@ -40,3 +40,5 @@
   </div>
   <app-footer></app-footer>
 </div>
+
+<alert></alert>
