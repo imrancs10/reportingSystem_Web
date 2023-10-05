@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  showPreview: boolean = false;
   userType: any = 'user';
   username: any = '';
   remeberMe: boolean = false;
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   onUserLogin(form: NgForm) {
+    this.showPreview = true;
     if (form.invalid) return;
     if (this.remeberMe) {
       sessionStorage.setItem('User', form.value.username);
@@ -43,9 +45,11 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('Role', 'User');
       sessionStorage.setItem('userName', form.value.username);
       sessionStorage.setItem('orgLogoName', res?.userResponse?.orgLogoFileName);
+      this.showPreview = false;
       this.route.navigate(['/report']);
     },
       error => {
+        this.showPreview = false;
         console.log("Error")
       });
 
