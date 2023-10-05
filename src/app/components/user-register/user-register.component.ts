@@ -67,7 +67,8 @@ export class UserRegisterComponent implements OnInit {
       },
         error => {
            this.showPreview = false;
-          this.openMessageDialog("Some Went Happen");
+           this.alertService.error('Error Happens, please contact administrator', this.options);
+          //this.openMessageDialog("Some Went Happen");
         });
     };
     // console.log(body);
