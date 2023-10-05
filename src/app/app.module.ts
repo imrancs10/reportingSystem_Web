@@ -16,6 +16,7 @@ import { TokenInterceptorService } from './TokenInterceptorService';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { OrganizationComponent } from './components/organization/organization.component';
+import { AlertModule } from './_alert';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrganizationComponent } from './components/organization/organization.co
     FormsModule,
     HttpClientModule,
     SharedModule,
-    AgGridModule
+    AgGridModule,
+    AlertModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, 

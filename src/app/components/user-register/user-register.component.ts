@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { BussinessService } from 'src/app/services/bussiness.service';
 import { TermsconditionComponent } from 'src/app/shared/termscondition/termscondition.component';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
+import { AlertService } from '../../_alert/alert.service';
+
 
 @Component({
   selector: 'app-user-register',
@@ -12,11 +14,15 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
   styleUrls: ['./user-register.component.scss']
 })
 export class UserRegisterComponent implements OnInit {
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+};
   file: any;
   showPreview: boolean = false;
   @ViewChild('registerForm') registerForm!: NgForm
   termsCondition: boolean = false;
-  constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService) { }
+  constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService,protected alertService: AlertService) { }
   ngOnInit(): void {
     this.termsCondition = false;
   }
@@ -54,8 +60,10 @@ export class UserRegisterComponent implements OnInit {
         // console.log(res);
         // this.pdfUrl = this.getSafeUrl(response);
         // this.onPdfLoad();
-        this.openMessageDialog("Successfully saved");
+        //this.openMessageDialog("Successfully saved");
         this.showPreview = false;
+        this.alertService.success('Successfully saved', this.options);
+        form.reset();
       },
         error => {
            this.showPreview = false;
