@@ -7,16 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  todayYear:any;
-  constructor(public route:Router){
-    let date=new Date();
-    this.todayYear=date.getFullYear()
-  }
+  constructor(public route:Router){}
   ngOnInit(): void {
     
   }
-  onForgetPassword(){
-    this.route.navigate(['home/change-password']);
+  onReport(){
+    this.route.navigate(['/home/report']);
   }
-  onProfile(){}
 }

@@ -3,25 +3,22 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { AuthGuard } from '../login/auth.guard';
-import { FormsModule } from '@angular/forms';
 
-const routes: Routes = [
+const routes:Routes=[
   {
-    path: 'change-password',
-    component: ForgetPasswordComponent,
-    // canActivate: [AuthGuard],
-  },
-  {
-    path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-  },
-];
+    path:'',component:HomeComponent,
+  }
+]
+
 
 @NgModule({
-  declarations: [HomeComponent, ForgetPasswordComponent],
-  imports: [CommonModule, SharedModule, FormsModule, RouterModule.forChild(routes)],
+  declarations: [
+    HomeComponent,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes)
+  ]
 })
-export class HomeModule {}
+export class HomeModule { }
