@@ -9,9 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { TermsconditionComponent } from './termscondition/termscondition.component';
+import { HomeHeaderComponent } from './home-header/home-header.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent,TermsconditionComponent],
+  declarations: [HeaderComponent, FooterComponent,TermsconditionComponent, HomeHeaderComponent],
   imports:[
     MatIconModule,
     MatMenuModule,
@@ -24,6 +25,7 @@ import { TermsconditionComponent } from './termscondition/termscondition.compone
   exports: [
     HeaderComponent,
     FooterComponent,
+    HomeHeaderComponent,
     MatIconModule,
     MatMenuModule,
     MatInputModule,

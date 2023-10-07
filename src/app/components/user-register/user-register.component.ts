@@ -31,8 +31,8 @@ export class UserRegisterComponent implements OnInit {
     this.file = event.target.files[0]
   }
   onClick(form: NgForm) {
-    this.showPreview = true;
     if (!this.termsCondition || form.invalid) return;
+    this.showPreview = true;
     //logic for generate the UserName by Raghav Garg 
     let name = form.value.fname[0] + form.value.lname[0];
     let username = name + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10)

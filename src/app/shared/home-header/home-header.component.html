@@ -1,0 +1,42 @@
+<div>
+    <nav class="navbar navbar-expand-md bg-body" style="border-bottom: 1px solid black;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/#/home">
+                <span>ImgDotPix</span></a><button data-bs-toggle="collapse" class="navbar-toggler"
+                data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" href="/report">Reports</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Second Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Third Item</a>
+                    </li> -->
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">X-Ray Report </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/report">Chest X-Ray Report</a>
+                            <!-- <a class="dropdown-item" href="#">Second Item</a> -->
+                            <!-- <a class="dropdown-item" href="#">Third Item</a> -->
+                        </div>
+                    </li>
+                </ul>
+                <button mat-button [matMenuTriggerFor]="beforeMenu">
+                    <mat-icon>manage_accounts</mat-icon>
+                </button>
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                    <button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button>
+                    <button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button>
+                    <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+                </mat-menu>
+                <!-- <button class="btn btn-primary" type="button">
+                    
+                </button> -->
+            </div>
+        </div>
+    </nav>
+</div>
