@@ -25,4 +25,8 @@ export class HomeHeaderComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
+  onHelp(){
+    this.route.navigate(['/contactus']);
+  }
+
 }
