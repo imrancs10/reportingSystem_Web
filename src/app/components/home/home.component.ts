@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
   todayYear:any;
+  OrganizationName:any;
   constructor(public route:Router){
     let date=new Date();
     this.todayYear=date.getFullYear()
@@ -15,8 +16,4 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     
   }
-  onForgetPassword(){
-    this.route.navigate(['home/change-password']);
-  }
-  onProfile(){}
 }

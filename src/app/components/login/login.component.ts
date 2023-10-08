@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('userName', form.value.username);
       sessionStorage.setItem('orgLogoName', res?.userResponse?.orgLogoFileName);
       this.showPreview = false;
-      this.route.navigate(['/report']);
+      this.route.navigate(['/home']);
     },
       error => {
         this.showPreview = false;
