@@ -3,7 +3,19 @@
   <app-header></app-header>
 </div>
 <div class="loading-overlay" [ngClass]="{ 'show': showPreview }"></div>
-<h2 style="text-align: center;">Investigation : X-Ray Chest PA view</h2>
+<div class="row">
+  <div class="col-md-4">
+    <img [src]="logoName" alt="" style="width: 200px;height: 300px;">
+  </div>
+  <div class="col-md-8">
+    <h2 style="text-align: center;">Investigation : X-Ray Chest PA view</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{orgName}}
+  </div>
+</div>
 <hr>
 <div class="container" style="border: 1px solid black">
   <div class="heading">
@@ -58,9 +70,9 @@
       </div>
       <div class="col-md-4 col-sm-12 columns">
         <label>Mobile No.*</label>
-        <input type="number" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="model.mobileNo" name="mobileNo" class="form-control custom-input" 
-          placeholder="+91" required />
-        <div class="error" 
+        <input type="number" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="model.mobileNo"
+          name="mobileNo" class="form-control custom-input" placeholder="+91" required />
+        <div class="error"
           *ngIf="patientForm.controls['mobileNo']?.touched && patientForm.controls['mobileNo'].errors?.['required']">
           Mobile is required</div>
       </div>
