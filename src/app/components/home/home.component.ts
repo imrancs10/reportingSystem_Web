@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-<<<<<<< HEAD
   todayYear:any;
   OrganizationName:any;
   constructor(public route:Router){
@@ -15,13 +14,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     
   }
-=======
-  constructor(public route:Router){}
-  ngOnInit(): void {
-    
-  }
   onReport(){
     this.route.navigate(['/home/report']);
   }
->>>>>>> main
 }

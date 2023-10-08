@@ -16,11 +16,11 @@ const routes: Routes = [
         (m) => m.OrganizationModule
       ),
   },
-  // {
-  //   path: 'home',
-  //   loadChildren: () =>
-  //     import('./components/home/home.module').then((m) => m.HomeModule),
-  // },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./components/home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: 'report',
     loadChildren: () =>
