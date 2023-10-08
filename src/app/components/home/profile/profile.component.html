@@ -1,0 +1,229 @@
+<div>
+  <div id="wrapper">
+    <div>
+      <app-home-header></app-home-header>
+    </div>
+    <div class="d-flex flex-column" id="content-wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          <h2 class="text-dark mb-4" style="padding-top: 10px">Profile</h2>
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="card mb-3">
+                <div class="card-body text-center shadow">
+                  <div>
+                    <h2 style="text-decoration: underline;">Organization Logo</h2>
+                  </div>
+                  <img
+                    class="rounded-circle mb-3 mt-4"
+                    src="../../../../assets/avatar1.jpeg"
+                    width="160"
+                    height="160"
+                  />
+                  <div class="mb-3">
+                    <input
+                      type="file"
+                      hidden
+                      #filePicker
+                      (change)="changeLogoEvent($event)"
+                    />
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      (click)="filePicker.click()"
+                      type="button"
+                    >
+                      Change Logo
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card shadow mb-4"></div>
+            </div>
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col">
+                  <div class="card shadow mb-3">
+                    <div class="card-header py-2">
+                      <p style="font-size: 18px; color: black">
+                        Organization Settings
+                      </p>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="name"
+                                ><strong>Organization Name *</strong></label
+                              ><input
+                                class="form-control"
+                                type="text"
+                                id="name"
+                                placeholder="Organization Name"
+                                name="name"
+                                required
+                                [(ngModel)]="name"
+                              />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="email"
+                                ><strong
+                                  >Email Address *</strong
+                                ></label
+                              ><input
+                                class="form-control"
+                                type="email"
+                                id="email"
+                                placeholder="abc@example.com"
+                                name="email"
+                                required
+                                [(ngModel)]="email"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="fname"
+                                ><strong>First Name *</strong></label
+                              ><input
+                                class="form-control"
+                                type="text"
+                                id="fname"
+                                placeholder="First Name"
+                                required
+                                [(ngModel)]="fname"
+                                name="fname"
+                              />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="lname"
+                                ><strong>Last Name *</strong></label
+                              ><input
+                                class="form-control"
+                                type="text"
+                                id="lname"
+                                required
+                                [(ngModel)]="lname"
+                                placeholder="Last Name"
+                                name="lname"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <button
+                            mat-raised-button
+                            color="primary"
+                            type="button"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="card shadow">
+                    <div class="card-header py-2">
+                      <p style="font-size: 18px; color: black">
+                        Contact Settings
+                      </p>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="state"
+                                ><strong>State*</strong></label
+                              ><input
+                                class="form-control"
+                                type="text"
+                                id="state"
+                                placeholder="Enter State"
+                                name="state"
+                                required
+                                [(ngModel)]="state"
+                              />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="pincode"
+                                ><strong>Pin Code *</strong></label
+                              ><input
+                                class="form-control"
+                                type="number"
+                                id="pincode"
+                                placeholder="Enter Pin Code"
+                                name="pincode"
+                                required
+                                [(ngModel)]="pincode"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="city"
+                                ><strong>City *</strong></label
+                              ><input
+                                class="form-control"
+                                type="text"
+                                id="city"
+                                placeholder="Enter City"
+                                name="city"
+                                [(ngModel)]="city"
+                              />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3">
+                              <label class="form-label" for="phone"
+                                ><strong>Organization Phone No *</strong></label
+                              ><input
+                                class="form-control"
+                                type="number"
+                                id="phone"
+                                placeholder="Enter Phone No"
+                                name="phone"
+                                [(ngModel)]="phone"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <button
+                            mat-raised-button
+                            color="primary"
+                            type="button"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shadow mb-5"></div>
+        </div>
+      </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"
+      ><i class="fas fa-angle-up"></i
+    ></a>
+  </div>
+  <div>
+    <app-footer></app-footer>
+  </div>
+</div>

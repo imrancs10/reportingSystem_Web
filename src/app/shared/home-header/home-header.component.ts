@@ -15,7 +15,9 @@ export class HomeHeaderComponent implements OnInit {
   onForgetPassword(){
     this.route.navigate(['home/change-password']);
   }
-  onProfile(){}
+  onProfile(){
+    this.route.navigate(['home/profile']);
+  }
 
   onLogout() {
     this.auth.setUserRole('');
