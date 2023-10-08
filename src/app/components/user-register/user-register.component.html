@@ -23,13 +23,13 @@
                         <div class="col-md-4 col-sm-12">
                             <label>Organization Email * :</label>
                             <input type="email" required ngModel name="gmail" class="form-control custom-input"
-                                placeholder="Please Enter Email" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                                placeholder="Please Enter Email" autocomplete="off" />
                             <div class="error"
                                 *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['required']">
                                 Email is required
                             </div>
                             <div class="error"
-                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['pattern']">
+                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['email']">
                                 Email is Invalid
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="col-md-4 col-sm-12">
                             <label>Pincode* :</label>
                             <input type="number" required ngModel name="Pincode" class="form-control custom-input"
-                                placeholder="Enter Pincode" autocomplete="off" />
+                                placeholder="Enter Pincode" autocomplete="off" onKeyPress="if(this.value.length==6) return false;"/>
                             <div class="error"
                                 *ngIf="registerForm.controls['Pincode']?.touched && registerForm.controls['Pincode'].errors?.['required']">
                                 Pincode is required
@@ -122,14 +122,10 @@
                         <div class="col-md-4 col-sm-12">
                             <label>Phone Number* :</label>
                             <input type="number" required ngModel name="phone" class="form-control custom-input"
-                                placeholder="Enter Phone Number" maxlength="10" autocomplete="off" />
+                                placeholder="Enter Phone Number" autocomplete="off" onKeyPress="if(this.value.length==10) return false;"/>
                             <div class="error"
                                 *ngIf="registerForm.controls['phone']?.touched && registerForm.controls['phone'].errors?.['required']">
                                 Phone Number is required
-                            </div>
-                            <div class="error"
-                                *ngIf="registerForm.controls['phone']?.touched && registerForm.controls['phone'].errors?.['maxlength']">
-                                Please enter 10 digit Mobile No.
                             </div>
                         </div>
                     </div>
