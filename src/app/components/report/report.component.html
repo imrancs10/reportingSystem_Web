@@ -5,17 +5,23 @@
 <div class="loading-overlay" [ngClass]="{ 'show': showPreview }"></div>
 <div class="row">
   <div class="col-md-4">
-    <img [src]="logoName" alt="" style="width: 200px;height: 300px;">
+    <img [src]="logoName" alt="" style="width: 150px;height: 150px;float: right;">
   </div>
   <div class="col-md-8">
-    <h2 style="text-align: center;">Investigation : X-Ray Chest PA view</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 style="text-align: left;margin-bottom :0px;">Investigation : X-Ray Chest PA view</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {{orgName}}
+      </div>
+    </div>
+
   </div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    {{orgName}}
-  </div>
-</div>
+
 <hr>
 <div class="container" style="border: 1px solid black">
   <div class="heading">

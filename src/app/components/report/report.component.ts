@@ -153,7 +153,7 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.orgName = sessionStorage.getItem("Name");
-    this.logoName = "http://api.imgdotpix.in/wwwroot/OrganizationLogo/" + sessionStorage.getItem("orgLogoName");
+    this.logoName = "http://api.imgdotpix.in/OrganizationLogo/" + sessionStorage.getItem("orgLogoName");
   }
 
   onCardiacSizeChanged(event: any) {
