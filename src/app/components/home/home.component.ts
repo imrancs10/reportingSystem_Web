@@ -14,7 +14,4 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     
   }
-  onReport(){
-    this.route.navigate(['/home/report']);
-  }
 }

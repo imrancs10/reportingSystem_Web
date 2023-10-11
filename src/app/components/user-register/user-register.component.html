@@ -23,7 +23,7 @@
                         <div class="col-md-4 col-sm-12">
                             <label>Organization Email * :</label>
                             <input type="email" required ngModel name="gmail" class="form-control custom-input"
-                                placeholder="Please Enter Email" autocomplete="off" />
+                                placeholder="Please Enter Email" autocomplete="off" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                             <div class="error"
                                 *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['required']">
                                 Email is required
