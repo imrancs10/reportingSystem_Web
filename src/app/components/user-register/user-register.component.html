@@ -29,15 +29,13 @@
                                 Email is required
                             </div>
                             <div class="error"
-                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['email']">
+                                *ngIf="registerForm.controls['gmail']?.touched && registerForm.controls['gmail'].errors?.['pattern']">
                                 Email is Invalid
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label>Organization Logo * :</label>
-                            <input (change)="this.onFilechange($event)" required ngModel name="logo" class="form-control custom-input" type="file" id="formFile" placeholder="Please Enter Department logo" >
-                            <!-- <input type="file" required ngModel name="logo" class="form-control custom-input"
-                                placeholder="Please Enter Department logo" /> -->
+                            <input (change)="this.onFilechange($event)" required ngModel name="logo" class="form-control custom-input" type="file" id="formFile" placeholder="Please Enter Department logo" accept="image/jpeg, image/png, image/svg+xml" >
                             <div class="error"
                                 *ngIf="registerForm.controls['logo']?.touched && registerForm.controls['logo'].errors?.['required']">
                                 Logo is required
@@ -64,10 +62,10 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label>State*: </label>
+                            <label>State *: </label>
                             <select class="form-select" ngModel required name="state"
                                 aria-label="Default select example">
-                                <option selected value="">Select State</option>
+                                <option selected value="" disabled>Select State</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                                 <option value="Bihar">Bihar</option>

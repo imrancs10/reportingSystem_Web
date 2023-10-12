@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { setup } from './setup';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+// import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class BussinessService {
     else {
       this.apiUrl = setup.API_URL_LOCAL;
     }
-    console.log(this.apiUrl);
+    // console.log(this.apiUrl);
   }
   private allPatientData: any;
 

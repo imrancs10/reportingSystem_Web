@@ -7,69 +7,99 @@ import { TermsconditionComponent } from 'src/app/shared/termscondition/termscond
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { AlertService } from '../../_alert/alert.service';
 
-
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.scss']
+  styleUrls: ['./user-register.component.scss'],
 })
 export class UserRegisterComponent implements OnInit {
   options = {
     autoClose: true,
-    keepAfterRouteChange: false
+    keepAfterRouteChange: false,
   };
   file: any;
   showPreview: boolean = false;
-  @ViewChild('registerForm') registerForm!: NgForm
+  @ViewChild('registerForm') registerForm!: NgForm;
   termsCondition: boolean = false;
-  constructor(public route: Router, public dialog: MatDialog, public business: BussinessService, public businessData: BussinessService, protected alertService: AlertService) { }
+  constructor(
+    public route: Router,
+    public dialog: MatDialog,
+    public business: BussinessService,
+    public businessData: BussinessService,
+    protected alertService: AlertService
+  ) {}
   ngOnInit(): void {
     this.termsCondition = false;
   }
   onFilechange(event: any) {
-    console.log(event.target.files[0])
-    this.file = event.target.files[0]
+    if (!event.target.files) {
+      alert('Please Upload Organization Logo');
+      return;
+    }
+    console.log(event.target.files[0]);
+    if (
+      event.target.files[0].type === 'image/svg+xml' ||
+      event.target.files[0].type === 'image/jpeg' ||
+      event.target.files[0].type === 'image/png'
+    ) {
+      this.file = event.target.files[0];
+    } else {
+      alert('Invalid File Format. Please Choose jpeg/png/svg/xml format');
+      event.target.value = '';
+      this.file = '';
+      return;
+    }
   }
   onClick(form: NgForm) {
-    this.showPreview = true;
     if (!this.termsCondition || form.invalid) return;
-    //logic for generate the UserName by Raghav Garg 
+    if (!this.file || this.file == '' || this.file.name == '') return;
+    this.showPreview = true;
+    //logic for generate the UserName by Raghav Garg
     let name = form.value.fname[0] + form.value.lname[0];
-    let username = name + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10)
+    let username =
+      name +
+      Math.floor(Math.random() * 10) +
+      Math.floor(Math.random() * 10) +
+      Math.floor(Math.random() * 10);
     let pass = this.business.getPass();
     let body = {
-      "Name": form.value.organization_name,
-      "Email": form.value.gmail,
-      "FirstName": form.value.fname,
-      "LastName": form.value.lname,
-      "State": form.value.state,
-      "City": form.value.city,
-      "PinCode": form.value.Pincode,
-      "Mobile": form.value.phone,
-      "username": username,
-      "Password": pass,
-      "LogoFileName": this.file.name,
-      "LogoBase64": ""
-    }
+      Name: form.value.organization_name,
+      Email: form.value.gmail,
+      FirstName: form.value.fname,
+      LastName: form.value.lname,
+      State: form.value.state,
+      City: form.value.city,
+      PinCode: form.value.Pincode,
+      Mobile: form.value.phone,
+      username: username,
+      Password: pass,
+      LogoFileName: this.file.name,
+      LogoBase64: '',
+    };
     const reader = new FileReader();
     reader.readAsDataURL(this.file);
     reader.onload = () => {
       //console.log(reader.result);
-      body.LogoBase64 = typeof (reader.result) == 'string' ? reader.result : "";
-      this.businessData.registerUser(body).subscribe((response) => {
-        // console.log(res);
-        // this.pdfUrl = this.getSafeUrl(response);
-        // this.onPdfLoad();
-        //this.openMessageDialog("Successfully saved");
-        this.showPreview = false;
-        this.alertService.success('Successfully saved', this.options);
-        form.reset();
-      },
-        error => {
+      body.LogoBase64 = typeof reader.result == 'string' ? reader.result : '';
+      this.businessData.registerUser(body).subscribe(
+        (response) => {
+          // console.log(res);
+          // this.pdfUrl = this.getSafeUrl(response);
+          // this.onPdfLoad();
+          //this.openMessageDialog("Successfully saved");
           this.showPreview = false;
-          this.alertService.error('Error happens, please contact administrator', this.options);
+          this.alertService.success('Successfully saved', this.options);
+          form.reset();
+        },
+        (error) => {
+          this.showPreview = false;
+          this.alertService.error(
+            'Error happens, please contact administrator',
+            this.options
+          );
           //this.openMessageDialog("Some Went Happen");
-        });
+        }
+      );
     };
     // console.log(body);
 
@@ -84,11 +114,10 @@ export class UserRegisterComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(TermsconditionComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === 'accept') {
         this.termsCondition = true;
-      }
-      else this.termsCondition = false;
+      } else this.termsCondition = false;
     });
   }
   iframe: any;
@@ -98,7 +127,7 @@ export class UserRegisterComponent implements OnInit {
       height: 'auto',
       data: { msg: mesg },
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === 'reset') {
         document.body.removeChild(this.iframe);
         //this.onReset();
