@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_alert';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
   showPreview: boolean = false;
   userType: any = 'user';
   username: any = '';
   remeberMe: boolean = false;
   @ViewChild('loginForm') loginForm!: NgForm
-  constructor(public route: Router, public auth: AuthService) { }
+  constructor(public route: Router, public auth: AuthService, protected alertService: AlertService) { }
   ngOnInit(): void {
     if (sessionStorage.getItem('User')) {
       console.log(sessionStorage.getItem('User'));
@@ -51,6 +56,7 @@ export class LoginComponent implements OnInit {
     },
       error => {
         this.showPreview = false;
+        this.alertService.error('User Name or Password are Incorrect.', this.options);
         console.log("Error")
       });
 
