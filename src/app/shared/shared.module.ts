@@ -11,6 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TermsconditionComponent } from './termscondition/termscondition.component';
 import {HomeHeaderComponent} from './home-header/home-header.component';
 import { ContactusComponent } from './contactus/contactus.component';
+
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
   imports:[
@@ -20,7 +22,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatDialogModule,
+    MatDialogModule
   ],
   exports: [
     HeaderComponent,

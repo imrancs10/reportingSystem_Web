@@ -17,6 +17,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { AlertModule } from './_alert';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerComponent } from '../app/spinner/spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { AlertModule } from './_alert';
     DashboardComponent,
     AdminDashboardComponent,
     UserRegisterComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,13 +43,20 @@ import { AlertModule } from './_alert';
     HttpClientModule,
     SharedModule,
     AgGridModule,
-    AlertModule
+    AlertModule,
+    MatProgressSpinnerModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS, 
-    useClass: TokenInterceptorService, 
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
