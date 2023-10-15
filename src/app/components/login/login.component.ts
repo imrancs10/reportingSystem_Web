@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
   showPreview: boolean = false;
   userType: any = 'user';
   username: any = '';
+  btnName:any='visibility_off';
+  passText:any='password';
+  showPassword:boolean=false;
   remeberMe: boolean = false;
   @ViewChild('loginForm') loginForm!: NgForm
   constructor(public route: Router, public auth: AuthService, protected alertService: AlertService) { }
@@ -31,8 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   onUserLogin(form: NgForm) {
-    this.showPreview = true;
     if (form.invalid) return;
+    this.showPreview = true;
     if (this.remeberMe) {
       sessionStorage.setItem('User', form.value.username);
     }
@@ -65,5 +68,16 @@ export class LoginComponent implements OnInit {
   }
   onRegister() {
     this.route.navigate(['/register']);
+  }
+  onShowPassword(){
+    this.showPassword=!this.showPassword;
+    if(this.showPassword){
+      this.btnName='visibility';
+      this.passText='text';
+    }
+    else{
+      this.btnName='visibility_off';
+      this.passText='password';
+    }
   }
 }

@@ -8,9 +8,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home-header.component.scss']
 })
 export class HomeHeaderComponent implements OnInit {
-  constructor(private route:Router,private auth:AuthService){}
-  ngOnInit(): void {
+  userId:any;
+  canAccess:boolean=false;
+  constructor(private route:Router,private auth:AuthService){
     
+  }
+  ngOnInit(): void {
+    this.canAccess=false;
+    this.userId = sessionStorage.getItem("userId");
+    if(this.userId){
+      this.canAccess=true;
+    }
+    else this.canAccess=false;
   }
   onForgetPassword(){
     this.route.navigate(['home/change-password']);
@@ -27,6 +36,10 @@ export class HomeHeaderComponent implements OnInit {
 
   onHelp(){
     this.route.navigate(['/contactus']);
+  }
+
+  onLogin(){
+    this.route.navigate(['/login']);
   }
 
 }

@@ -29,10 +29,11 @@
                     <mat-icon>manage_accounts</mat-icon>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
-                    <button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button>
-                    <button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button>
-                    <button mat-menu-item (click)="onHelp()"><mat-icon>help_outline</mat-icon>Help</button>
-                    <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+                    <div *ngIf="canAccess"><button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button></div>
+                    <div *ngIf="canAccess"><button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button></div>
+                    <div><button mat-menu-item (click)="onHelp()"><mat-icon>help_outline</mat-icon>Help</button></div>
+                    <div *ngIf="canAccess"><button  mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button></div>
+                    <div *ngIf="!canAccess"><button  mat-menu-item (click)="onLogin()"><mat-icon>login</mat-icon>Login</button></div>
                     
                 </mat-menu>
                 <!-- <button class="btn btn-primary" type="button">

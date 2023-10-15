@@ -11,11 +11,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TermsconditionComponent } from './termscondition/termscondition.component';
 import {HomeHeaderComponent} from './home-header/home-header.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
   imports:[
+    CommonModule,
     MatIconModule,
     MatMenuModule,
     MatInputModule,

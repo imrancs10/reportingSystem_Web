@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contactus',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./contactus.component.scss']
 })
 export class ContactusComponent {
+  constructor(public route:Router){}
+
+  onRegister() {
+    this.route.navigate(['/register']);
+  }
+  onLogin(){
+    this.route.navigate(['/login']);
+  }
 
 }

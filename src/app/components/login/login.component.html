@@ -26,29 +26,37 @@
                 <div class="col-md-12 col-sm-12">
                   <label>Organization User Name *:</label>
                   <input type="email" required [(ngModel)]="username" name="username" autocomplete="off" class="form-control custom-input"
-                    placeholder="Enter Valid UserName" />
+                    placeholder="Enter Valid UserName" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                   <div class="error"
                     *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['required']">
                     UserName is required
                   </div>
+                  <div class="error"
+                      *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['pattern']">
+                      Email is Invalid
+                  </div>
                 </div>
                 <div class="col-md-12 col-sm-12" style="padding-top: 5px;">
                   <label>Password *:</label>
-                  <input type="password" required ngModel name="Password" class="form-control custom-input"
+                  <div class="input-group mb-3">
+                    <input [type]="passText" required ngModel name="Password" class="form-control custom-input" placeholder="Please Enter Password" />
+                    <button class="btns1" type="button" (click)="onShowPassword()" ><mat-icon>{{btnName}}</mat-icon></button>
+                  </div>
+                  <!-- <input type="password" required ngModel name="Password" class="form-control custom-input"
                     placeholder="Please Enter Password" />
                   <div class="error"
                     *ngIf="loginForm.controls['Password']?.touched && loginForm.controls['Password'].errors?.['required']">
                     Password is required
-                  </div>
+                  </div> -->
                 </div>
               </div>
-              <div class="boxs">
+              <!-- <div class="boxs">
                 <input  type="checkbox" value="" id="flexCheckChecked" name="remeberMe" autocomplete="off"
                   [(ngModel)]="remeberMe">
                 <label for="flexCheckChecked">
                   &nbsp; Remember Me
                 </label>
-              </div>
+              </div> -->
               <div style="padding-top: 20px; align-items: center; text-align: center;">
                 <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
               </div>
