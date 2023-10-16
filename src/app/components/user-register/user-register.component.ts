@@ -33,7 +33,7 @@ export class UserRegisterComponent implements OnInit {
   }
   onFilechange(event: any) {
     if (!event.target.files) {
-      alert('Please Upload Organization Logo');
+      this.alertService.error('Please Upload Organization Logo',this.options)
       return;
     }
     console.log(event.target.files[0]);
@@ -44,7 +44,7 @@ export class UserRegisterComponent implements OnInit {
     ) {
       this.file = event.target.files[0];
     } else {
-      alert('Invalid File Format. Please Choose jpeg/png/svg/xml format');
+      this.alertService.error('Invalid File Format. Please Choose jpeg/png/svg/xml format',this.options)
       event.target.value = '';
       this.file = '';
       return;

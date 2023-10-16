@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AlertService } from 'src/app/_alert';
 import { BussinessService } from 'src/app/services/bussiness.service';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
@@ -11,6 +12,11 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
+  file: any;
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false,
+  };
   model: any = {
     "mobileNo": null,
     "gender": "",
@@ -61,7 +67,9 @@ export class ReportComponent implements OnInit {
     "AorticKnuckleUnfoldingofAorta": "",
     "SoftTissueAbnormal": "",
     "BreastShadowAbnormal": "",
-    "orgLogoName": ""
+    "orgLogoName": "",
+    "XRayReportFileName": "",
+    "XRayReportBase64": ""
   };
 
   @ViewChild('patientForm') patientForm!: NgForm;
@@ -145,6 +153,7 @@ export class ReportComponent implements OnInit {
     public dialog: MatDialog,
     public businessData: BussinessService,
     private sanitizer: DomSanitizer,
+    protected alertService: AlertService
   ) {
     let todayDate = new Date();
     this.mindate = todayDate;
@@ -155,7 +164,20 @@ export class ReportComponent implements OnInit {
     this.orgName = sessionStorage.getItem("Name");
     this.logoName = "http://api.imgdotpix.in/OrganizationLogo/" + sessionStorage.getItem("orgLogoName");
   }
-
+  onFilechange(event: any) {
+    if (!event.target.files) {
+      this.alertService.error("Please Upload XRay Report", this.options);
+      return;
+    }
+    console.log(event.target.files[0]);
+    this.file = event.target.files[0];
+    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM") {
+      this.alertService.error("Invalid File Format. Please Choose DICOM format", this.options);
+      event.target.value = '';
+      this.file = '';
+      return;
+    }
+  }
   onCardiacSizeChanged(event: any) {
     console.log(event);
 
@@ -266,51 +288,24 @@ export class ReportComponent implements OnInit {
     }
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
-    //this.businessData.savePatientData(patientForm.value);
-    this.businessData.saveDataToDB(this.model).subscribe((response) => {
-      // console.log(res);
-      this.pdfUrl = this.getSafeUrl(response);
-      this.onPdfLoad();
-      // const nav = (window.navigator as any);
-      // if (window.navigator && nav.msSaveOrOpenBlob) {
-      //   var fileName = 'export_file.pdf'
-      //   /*var fileNameFromHeader = response.headers._headers.toJSON().find(x => x[0] == 'filename');
-      //   if (fileNameFromHeader.length > 0) {
-      //       fileName = fileNameFromHeader[1][0];
-      //   }*/
-      //   nav.msSaveOrOpenBlob(response, fileName);
-      // } else {
-      //   var objectUrl = URL.createObjectURL(response);
-      //   window.open(objectUrl); //,'Template.xlsx'
-      // }
-      this.showPreview = false;
-    },
-      error => {
+
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.onload = () => {
+      //console.log(reader.result);
+      this.model.XRayReportFileName = this.file.name;
+      this.model.XRayReportBase64 = typeof reader.result == 'string' ? reader.result : '';
+      this.businessData.saveDataToDB(this.model).subscribe((response) => {
+        this.pdfUrl = this.getSafeUrl(response);
+        this.onPdfLoad();
         this.showPreview = false;
-        this.openDialog('pdfError');
-      });
-    // this.businessData.getPdf().subscribe(
-    //   pdfBlob => {
-
-    //     // first save data then generate PDF
-    //     this.businessData.saveDataToDB().subscribe((res)=>{
-    //         // console.log(res);
-    //         this.pdfUrl = this.getSafeUrl(pdfBlob);
-    //         this.onPdfLoad();
-    //     },
-    //     error => {
-    //       this.showPreview=false;
-    //       this.openDialog('pdfError');
-    //     });
-
-    //     // window.open(this.pdfUrl.changingThisBreaksApplicationSecurity, '_blank'); 
-    //   },
-    //   error => {
-    //     this.showPreview=false;
-    //     this.openDialog('pdfError');
-    //   }
-    // );
-
+      },
+        error => {
+          this.showPreview = false;
+          this.openDialog('pdfError');
+        });
+    };
   }
 
   openDialog(mesg: any) {

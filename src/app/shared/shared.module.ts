@@ -12,7 +12,7 @@ import { TermsconditionComponent } from './termscondition/termscondition.compone
 import {HomeHeaderComponent} from './home-header/home-header.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CommonModule } from '@angular/common';
-
+import { AlertModule } from '../_alert';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
@@ -24,7 +24,8 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    AlertModule
   ],
   exports: [
     HeaderComponent,
