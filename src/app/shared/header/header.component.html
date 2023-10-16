@@ -1,4 +1,3 @@
-<!-- <div style="height: 2px; width: 100%; color: black; background-color: black;"></div> -->
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <button mat-button (click)="openDashboardPage()"><mat-icon>home</mat-icon></button>
@@ -6,45 +5,12 @@
       <button mat-button (click)="openOrganizationPage()"
         style="position: absolute;left: 4%;top: 18%;"><mat-icon>supervisor_account</mat-icon></button>
     </div>
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"> -->
     <a class="navbar-brand"></a>
     <div class="d-flex">
       <button mat-button [matMenuTriggerFor]="beforeMenu"><mat-icon>manage_accounts</mat-icon></button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <!-- <button mat-raised-button><mat-icon>logout</mat-icon>Logout</button> -->
-        <button mat-raised-button type="button" color="accent"
-          (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+          <button  mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
       </mat-menu>
-      <!--  -->
     </div>
   </div>
 </nav>
-<!-- <div style="height: 2px; width: 100%; color: black; background-color: black;"></div> -->
-
-
-<!-- <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-    Link with href
-  </a> -->
-
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
