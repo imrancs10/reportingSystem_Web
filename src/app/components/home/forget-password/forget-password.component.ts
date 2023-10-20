@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_alert';
 
 @Component({
   selector: 'app-forget-password',
@@ -12,7 +13,12 @@ export class ForgetPasswordComponent implements OnInit {
   oldPassword:any;
   newPassword:any;
   renewPassword:any;
-  constructor(private route:Router){}
+  constructor(private route:Router,protected alertService: AlertService){}
+
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
 
   ngOnInit(): void {
     
@@ -21,7 +27,10 @@ export class ForgetPasswordComponent implements OnInit {
   onChangePassword(form:NgForm){
     console.log(form.value);
     if(form.invalid) return;
+    if(this.newPassword!=this.renewPassword){
+      this.alertService.error('Please check new password is not same as Re-Enter password ', this.options);
+    }
     // change password API
-    this.route.navigate(['/home']);
+    // this.route.navigate(['/home']);
   }
 }

@@ -82,6 +82,11 @@ export class BussinessService {
   getAllDataFromDB(): Observable<any> {
     return this.http.get(this.apiUrl + 'PatientReport/get/patientReport/');
   }
+
+  getOrgDataFromDB(): Observable<any> {
+    return this.http.get(this.apiUrl + 'Auth/get/profile/');
+  }
+  
   private extractData(res: any) {
     let body = res;
     return body;

@@ -6,13 +6,17 @@
     <div class="d-flex flex-column" id="content-wrapper">
       <div id="content">
         <div class="container-fluid">
-          <h2 class="text-dark mb-4" style="padding-top: 10px">Customize Your Organization Profile</h2>
+          <h2 class="text-dark mb-4" style="padding-top: 10px">
+            Customize Your Organization Profile
+          </h2>
           <div class="row mb-3">
             <div class="col-lg-4">
               <div class="card mb-3">
                 <div class="card-body text-center shadow">
                   <div>
-                    <h2 style="text-decoration: underline;">Organization Logo</h2>
+                    <h2 style="text-decoration: underline">
+                      Organization Logo
+                    </h2>
                   </div>
                   <img
                     class="rounded-circle mb-3 mt-4"
@@ -51,7 +55,7 @@
                       </p>
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form (ngSubmit)="onSettingsForm(personalForm)" #personalForm="ngForm">
                         <div class="row">
                           <div class="col">
                             <div class="mb-3">
@@ -67,13 +71,14 @@
                                 [(ngModel)]="name"
                               />
                             </div>
+                            <div class="error" *ngIf="personalForm.controls['name']?.touched && personalForm.controls['name'].errors?.['required']">
+                              Organization Name is required
+                            </div>
                           </div>
                           <div class="col">
                             <div class="mb-3">
                               <label class="form-label" for="email"
-                                ><strong
-                                  >Email Address *</strong
-                                ></label
+                                ><strong>Email Address *</strong></label
                               ><input
                                 class="form-control"
                                 type="email"
@@ -81,8 +86,17 @@
                                 placeholder="abc@example.com"
                                 name="email"
                                 required
+                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                 [(ngModel)]="email"
                               />
+                            </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['email']?.touched && personalForm.controls['email'].errors?.['required']">
+                              Email is required
+                            </div>
+                            <div class="error"
+                                *ngIf="personalForm.controls['email']?.touched && personalForm.controls['email'].errors?.['pattern']">
+                                Email is Invalid
                             </div>
                           </div>
                         </div>
@@ -101,6 +115,10 @@
                                 name="fname"
                               />
                             </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['fname']?.touched && personalForm.controls['fname'].errors?.['required']">
+                              First Name is required
+                            </div>
                           </div>
                           <div class="col">
                             <div class="mb-3">
@@ -116,9 +134,13 @@
                                 name="lname"
                               />
                             </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['lname']?.touched && personalForm.controls['lname'].errors?.['required']">
+                              Last Name is required
+                            </div>
                           </div>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                           <button
                             mat-raised-button
                             color="primary"
@@ -126,18 +148,16 @@
                           >
                             Save
                           </button>
-                        </div>
-                      </form>
-                    </div>
+                        </div> -->
+                      <!-- </form> -->
+                    <!-- </div>
                   </div>
-                  <div class="card shadow">
-                    <div class="card-header py-2">
-                      <p style="font-size: 18px; color: black">
-                        Contact Settings
-                      </p>
+                  <div class="card shadow"> -->
+                    <div class="card-header py-2 mb-3">
+                      <h3>Contact Details</h3>
                     </div>
-                    <div class="card-body">
-                      <form>
+                    <!-- <div class="card-body">
+                      <form> -->
                         <div class="row">
                           <div class="col">
                             <div class="mb-3">
@@ -152,6 +172,10 @@
                                 required
                                 [(ngModel)]="state"
                               />
+                            </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['state']?.touched && personalForm.controls['state'].errors?.['required']">
+                              State is required
                             </div>
                           </div>
                           <div class="col">
@@ -168,6 +192,10 @@
                                 [(ngModel)]="pincode"
                               />
                             </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['pincode']?.touched && personalForm.controls['pincode'].errors?.['required']">
+                              Pin Code is required
+                            </div>
                           </div>
                         </div>
                         <div class="row">
@@ -182,7 +210,12 @@
                                 placeholder="Enter City"
                                 name="city"
                                 [(ngModel)]="city"
+                                required
                               />
+                            </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['city']?.touched && personalForm.controls['city'].errors?.['required']">
+                              City is required
                             </div>
                           </div>
                           <div class="col">
@@ -196,7 +229,12 @@
                                 placeholder="Enter Phone No"
                                 name="phone"
                                 [(ngModel)]="phone"
+                                required
                               />
+                            </div>
+                            <div class="error"
+                              *ngIf="personalForm.controls['phone']?.touched && personalForm.controls['phone'].errors?.['required']">
+                              Phone No is required
                             </div>
                           </div>
                         </div>
@@ -204,9 +242,9 @@
                           <button
                             mat-raised-button
                             color="primary"
-                            type="button"
+                            [disabled]="personalForm.invalid"
                           >
-                            Save
+                            Save Details
                           </button>
                         </div>
                       </form>

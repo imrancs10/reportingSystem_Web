@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { BussinessService } from 'src/app/services/bussiness.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,11 +16,32 @@ export class ProfileComponent implements OnInit {
   city:any;
   state:any;
   pincode:any;
-  constructor(){}
+  newLogo:any;
+  constructor(public business:BussinessService){}
   ngOnInit(): void {
-    // API to fetch Organization Fields and Data
-    //
+    this.prePopulate();
   }
+
+  prePopulate(){
+    this.business.getOrgDataFromDB().subscribe((res:any)=>{
+      console.log(res);
+      this.name=res.name;
+      this.email=res.email;
+      this.fname=res.firstName;
+      this.lname=res.lastName;
+      this.phone=res.mobile;
+      this.city=res.city;
+      this.pincode=res.pinCode;
+      this.state=res.state;
+      this.newLogo=res.logoFileName;
+    })
+  }
+
+  onSettingsForm(form:NgForm){
+    console.log(form.value);
+  }
+
+
   file:any;
   changeLogoEvent(event:any){
     if (
