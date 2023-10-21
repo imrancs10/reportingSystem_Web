@@ -68,6 +68,7 @@ export class ReportComponent implements OnInit {
     "SoftTissueAbnormal": "",
     "BreastShadowAbnormal": "",
     "orgLogoName": "",
+    "orgName": "",
     "XRayReportFileName": "",
     "XRayReportBase64": ""
   };
@@ -288,7 +289,7 @@ export class ReportComponent implements OnInit {
     }
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
-
+    this.model.orgName = sessionStorage.getItem("Name");
 
     const reader = new FileReader();
     reader.readAsDataURL(this.file);
