@@ -172,8 +172,8 @@ export class ReportComponent implements OnInit {
     }
     console.log(event.target.files[0]);
     this.file = event.target.files[0];
-    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM" 
-              && this.file.type != "image/jpeg") {
+    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM"
+      && this.file.type != "image/jpeg") {
       this.alertService.error("Invalid File Format. Please Choose DICOM/JPEG format", this.options);
       event.target.value = '';
       this.file = '';
@@ -320,6 +320,10 @@ export class ReportComponent implements OnInit {
       if (result === 'reset') {
         document.body.removeChild(this.iframe);
         this.onReset();
+      }
+      else if (result === 'showReport') {
+        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid+".jpeg";
+        window.open(reportPath);
       }
     });
   }
