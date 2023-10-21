@@ -171,12 +171,13 @@ export class ReportComponent implements OnInit {
     }
     console.log(event.target.files[0]);
     this.file = event.target.files[0];
-    // if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM") {
-    //   this.alertService.error("Invalid File Format. Please Choose DICOM format", this.options);
-    //   event.target.value = '';
-    //   this.file = '';
-    //   return;
-    // }
+    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM" 
+              && this.file.type != "image/jpeg") {
+      this.alertService.error("Invalid File Format. Please Choose DICOM/JPEG format", this.options);
+      event.target.value = '';
+      this.file = '';
+      return;
+    }
   }
   onCardiacSizeChanged(event: any) {
     console.log(event);
