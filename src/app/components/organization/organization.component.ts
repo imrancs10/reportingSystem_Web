@@ -11,14 +11,14 @@ export class OrganizationComponent implements OnInit {
   options = {
     autoClose: true,
     keepAfterRouteChange: false
-};
+  };
   termsCondition: boolean = false;
   rowData: any = [];
   columnDefs: any = [];
   defaultColDef: any;
   showPreview: boolean = false;
   constructor(
-    public businessData: BussinessService,protected alertService: AlertService
+    public businessData: BussinessService, protected alertService: AlertService
   ) { }
   ngOnInit(): void {
     this.columnDefs = [
@@ -36,7 +36,7 @@ export class OrganizationComponent implements OnInit {
       { headerName: "State", field: "state" },
       { headerName: "City", field: "city" },
       { headerName: "PinCode", field: "pinCode" },
-      // { headerName: "Password", field: "password" },
+      { headerName: "Password", field: "password" },
     ];
 
     this.defaultColDef = {
