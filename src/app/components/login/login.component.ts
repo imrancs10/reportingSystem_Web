@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   showPreview: boolean = false;
   userType: any = 'user';
   username: any = '';
-  btnName:any='visibility_off';
+  btnName:any='visibility';
   passText:any='password';
   showPassword:boolean=false;
   remeberMe: boolean = false;
@@ -72,11 +72,11 @@ export class LoginComponent implements OnInit {
   onShowPassword(){
     this.showPassword=!this.showPassword;
     if(this.showPassword){
-      this.btnName='visibility';
+      this.btnName='visibility_off';
       this.passText='text';
     }
     else{
-      this.btnName='visibility_off';
+      this.btnName='visibility';
       this.passText='password';
     }
   }

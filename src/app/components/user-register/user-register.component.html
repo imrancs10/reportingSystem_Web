@@ -95,6 +95,10 @@
                                 <option value="West Bengal">West Bengal</option>
                             </select>
                         </div>
+                        <div class="error"
+                                *ngIf="registerForm.controls['state']?.touched && registerForm.controls['state'].errors?.['required']">
+                                State is required
+                            </div>
                         
                     </div>
                     <div class="row" style="padding-top: 5px;">

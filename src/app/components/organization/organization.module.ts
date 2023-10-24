@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { OrganizationComponent } from './organization.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
-  declarations: [],
+  declarations: [OrganizationComponent],
   imports: [
     CommonModule, 
     OrganizationRoutingModule, 
-    AgGridModule
+    AgGridModule,
+    SharedModule
   ]
 })
 export class OrganizationModule { }

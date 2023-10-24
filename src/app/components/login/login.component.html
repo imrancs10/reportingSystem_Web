@@ -24,12 +24,12 @@
             <form (ngSubmit)="onUserLogin(loginForm)" #loginForm="ngForm">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <label>Organization User Name *:</label>
+                  <label>Organization Email *:</label>
                   <input type="email" required [(ngModel)]="username" name="username" autocomplete="off" class="form-control custom-input"
                     placeholder="Enter Valid UserName" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                   <div class="error"
                     *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['required']">
-                    UserName is required
+                    Email Address is required
                   </div>
                   <div class="error"
                       *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['pattern']">

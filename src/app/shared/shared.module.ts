@@ -13,6 +13,7 @@ import {HomeHeaderComponent} from './home-header/home-header.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CommonModule } from '@angular/common';
 import { AlertModule } from '../_alert';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
@@ -25,6 +26,7 @@ import { AlertModule } from '../_alert';
     MatFormFieldModule,
     MatButtonModule,
     MatDialogModule,
+    MatTooltipModule,
     AlertModule
   ],
   exports: [
@@ -39,6 +41,7 @@ import { AlertModule } from '../_alert';
     MatFormFieldModule,
     MatButtonModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}
