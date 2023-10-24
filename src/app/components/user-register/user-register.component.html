@@ -94,12 +94,11 @@
                                 <option value="Uttarakhand">Uttarakhand</option>
                                 <option value="West Bengal">West Bengal</option>
                             </select>
-                        </div>
-                        <div class="error"
+                            <div class="error"
                                 *ngIf="registerForm.controls['state']?.touched && registerForm.controls['state'].errors?.['required']">
                                 State is required
                             </div>
-                        
+                        </div>
                     </div>
                     <div class="row" style="padding-top: 5px;">
                         <div class="col-md-4 col-sm-12">

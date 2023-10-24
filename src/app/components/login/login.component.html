@@ -40,7 +40,7 @@
                   <label>Password *:</label>
                   <div class="input-group mb-3">
                     <input [type]="passText" required ngModel name="Password" class="form-control custom-input" placeholder="Please Enter Password" />
-                    <button class="btns1" type="button" (click)="onShowPassword()" ><mat-icon>{{btnName}}</mat-icon></button>
+                    <button matTooltip={{PasswordToolTip}} class="btns1" type="button" (click)="onShowPassword()" ><mat-icon>{{btnName}}</mat-icon></button>
                   </div>
                   <div class="error"
                     *ngIf="loginForm.controls['Password']?.touched && loginForm.controls['Password'].errors?.['required']">

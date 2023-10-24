@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   passText:any='password';
   showPassword:boolean=false;
   remeberMe: boolean = false;
+  PasswordToolTip:any='Show Password';
   @ViewChild('loginForm') loginForm!: NgForm
   constructor(public route: Router, public auth: AuthService, protected alertService: AlertService) { }
   ngOnInit(): void {
@@ -74,10 +75,12 @@ export class LoginComponent implements OnInit {
     if(this.showPassword){
       this.btnName='visibility_off';
       this.passText='text';
+      this.PasswordToolTip='Hide Password';
     }
     else{
       this.btnName='visibility';
       this.passText='password';
+      this.PasswordToolTip='Show Password';
     }
   }
 }
