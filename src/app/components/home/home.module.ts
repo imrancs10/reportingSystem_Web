@@ -12,16 +12,19 @@ const routes: Routes = [
   {
     path: 'change-password',
     component: ForgetPasswordComponent,
+    title:"Change Password - ImgDotPix",
     canActivate: [AuthGuard],
   },
   {
     path:'profile',
     component:ProfileComponent,
+    title:"Account - ImgDotPix",
     canActivate:[AuthGuard],
   },
   {
     path: '',
     component: HomeComponent,
+    title:"Home - ImgDotPix",
     canActivate: [AuthGuard],
   },
 ];

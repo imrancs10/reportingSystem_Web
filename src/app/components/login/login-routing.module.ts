@@ -5,6 +5,7 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    title: "Login - ImgDotPix"
   },
 ];
 

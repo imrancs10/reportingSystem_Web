@@ -42,6 +42,7 @@ const routes: Routes = [
   {
     path:'contactus',
     component:ContactusComponent,
+    title:"Contact Us - ImgDotPix",
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

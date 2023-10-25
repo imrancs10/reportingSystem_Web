@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: OrganizationComponent,
+    title:"Organizations - ImgDotPix",
     canActivate: [AuthGuard],
   },
 ];

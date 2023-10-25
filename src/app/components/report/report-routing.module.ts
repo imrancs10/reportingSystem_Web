@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ReportComponent,
+    title:"Chest X-Ray Report - ImgDotPix",
     canActivate: [AuthGuard],
   },
 ];
