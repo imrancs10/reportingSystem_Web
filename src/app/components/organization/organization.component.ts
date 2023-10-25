@@ -36,7 +36,7 @@ export class OrganizationComponent implements OnInit {
       { headerName: "State", field: "state" },
       { headerName: "City", field: "city" },
       { headerName: "PinCode", field: "pinCode" },
-      { headerName: "Password", field: "password" },
+      // { headerName: "Password", field: "password" },
     ];
 
     this.defaultColDef = {
