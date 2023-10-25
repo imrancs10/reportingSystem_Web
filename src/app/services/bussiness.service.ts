@@ -97,7 +97,7 @@ export class BussinessService {
   }
 
   getOrgDataFromDB(): Observable<any> {
-    return this.http.get(this.apiUrl + 'Auth/get/profile/');
+    return this.http.get(this.apiUrl + 'Auth/get/profile');
   }
   
   private extractData(res: any) {
