@@ -10,10 +10,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomeHeaderComponent implements OnInit {
   userId:any;
   canAccess:boolean=false;
+  isAdminLogin: boolean=false;
   constructor(private route:Router,private auth:AuthService){
     
   }
   ngOnInit(): void {
+    this.isAdminLogin = sessionStorage.getItem('Role') == 'Admin';
     this.canAccess=false;
     this.userId = sessionStorage.getItem("userId");
     if(this.userId){
@@ -40,6 +42,17 @@ export class HomeHeaderComponent implements OnInit {
 
   onLogin(){
     this.route.navigate(['/login']);
+  }
+
+  onRegister(){
+    this.route.navigate(['/register']);
+  }
+
+  openOrganizationPage() {
+    this.route.navigate(['/organization']);
+  }
+  openDashboardPage(){
+    this.route.navigate(['/dashboard']);
   }
 
 }

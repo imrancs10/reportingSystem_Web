@@ -1,5 +1,5 @@
 <div>
-    <nav class="navbar navbar-expand-md bg-body" style="border-bottom: 1px solid black;">
+    <nav class="navbar navbar-expand-md bg-body" style="border-bottom: 1px solid grey;">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="/#/home">
                 <span>ImgDotPix</span></a><button data-bs-toggle="collapse" class="navbar-toggler"
@@ -7,8 +7,8 @@
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav me-auto">
-                    <a class="nav-link active" href="/#/home">Home</a>
+                <ul class="navbar-nav mx-auto">
+                    <!-- <a class="nav-link active" href="/#/home">Home</a> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link active" href="/report">Reports</a>
                     </li> -->
@@ -18,12 +18,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Third Item</a>
                     </li> -->
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">X-Ray Report </a>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Products</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/#/report">Chest X-Ray Report</a>
-                            <!-- <a class="dropdown-item" href="#">Third Item</a> -->
                         </div>
                     </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">About Us</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/#/contactus">Contact Us</a>
+                        </div>
+                    </li>
+                    <div *ngIf="isAdminLogin">
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Controls</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/#/organization">Organizations Details</a>
+                                <a class="dropdown-item" href="/#/dashboard">Reports Details</a>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
                 <button mat-button [matMenuTriggerFor]="beforeMenu">
                     <mat-icon>manage_accounts</mat-icon>
@@ -31,9 +43,10 @@
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <div *ngIf="canAccess"><button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button></div>
                     <div *ngIf="canAccess"><button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button></div>
-                    <div><button mat-menu-item (click)="onHelp()"><mat-icon>help_outline</mat-icon>Help</button></div>
+                    <!-- <div><button mat-menu-item (click)="onHelp()"><mat-icon>help_outline</mat-icon>Help</button></div> -->
                     <div *ngIf="canAccess"><button  mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button></div>
                     <div *ngIf="!canAccess"><button  mat-menu-item (click)="onLogin()"><mat-icon>login</mat-icon>Login</button></div>
+                    <div *ngIf="!canAccess"><button  mat-menu-item (click)="onRegister()"><mat-icon>account_circle</mat-icon>Signup</button></div>
                     
                 </mat-menu>
                 <!-- <button class="btn btn-primary" type="button">

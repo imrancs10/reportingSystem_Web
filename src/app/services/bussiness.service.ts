@@ -99,6 +99,14 @@ export class BussinessService {
   getOrgDataFromDB(): Observable<any> {
     return this.http.get(this.apiUrl + 'Auth/get/profile');
   }
+
+  updateOrgProfileData(body:any):Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    return this.http.put(this.apiUrl + 'Auth/user/updateprofile',body,{ headers: httpHeaders });
+  }
   
   private extractData(res: any) {
     let body = res;
