@@ -179,6 +179,17 @@ export class ReportComponent implements OnInit {
       this.file = '';
       return;
     }
+    let ImageUrl: any = "";
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      ImageUrl = event.target.result;
+      var image = new Image();
+      image.src = ImageUrl;//"data:image/jpg;base64," + data.d;
+
+      var w = window.open("");
+      w?.document.write(image.outerHTML);
+    }
+    reader.readAsDataURL(this.file);
   }
   onCardiacSizeChanged(event: any) {
     console.log(event);
@@ -322,7 +333,7 @@ export class ReportComponent implements OnInit {
         this.onReset();
       }
       else if (result === 'showReport') {
-        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid+".jpeg";
+        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid + ".jpeg";
         window.open(reportPath);
       }
     });
