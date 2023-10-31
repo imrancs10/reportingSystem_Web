@@ -94,7 +94,6 @@ export class ReportComponent implements OnInit {
   openCardicShaped: boolean = false;
   ribnumber: boolean = false;
   pdfUrl: any;
-  xrayImage: any;
   maxdate: any;
   mindate: any;
 
@@ -149,7 +148,7 @@ export class ReportComponent implements OnInit {
 
   orgName: string | null = "";
   logoName: string | null = "";
-
+  xrayImage:any="";
   constructor(
     public dialog: MatDialog,
     public businessData: BussinessService,
@@ -168,17 +167,30 @@ export class ReportComponent implements OnInit {
   onFilechange(event: any) {
     if (!event.target.files) {
       this.alertService.error("Please Upload XRay Report", this.options);
+      this.xrayImage='';
       return;
     }
     console.log(event.target.files[0]);
     this.file = event.target.files[0];
-    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3) != "DCM"
-      && this.file.type != "image/jpeg") {
-      this.alertService.error("Invalid File Format. Please Choose DICOM/JPEG format", this.options);
+    let fileType=this.file.name.split('.')[1];
+    // console.log(fileType.toString().toUpperCase());
+    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3).toString().toUpperCase() != "DCM"
+      && this.file.type != "image/jpeg" && fileType.toString().toLowerCase() !== "dicom") {
+      this.alertService.error("Invalid File Format. Please Choose DCM/DICOM/JPEG format", this.options);
       event.target.value = '';
       this.file = '';
+      this.xrayImage='';
       return;
     }
+    
+    if (this.file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.xrayImage = e.target.result;
+      };
+      reader.readAsDataURL(this.file);
+    }
+    console.log("x-ray image base 64",this.xrayImage);
   }
   onCardiacSizeChanged(event: any) {
     console.log(event);

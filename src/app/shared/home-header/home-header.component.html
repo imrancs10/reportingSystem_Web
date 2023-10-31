@@ -18,7 +18,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Third Item</a>
                     </li> -->
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Products</a>
+                    <li class="nav-item dropdown products"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Products</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/#/report">Chest X-Ray Report</a>
                         </div>
@@ -41,8 +41,8 @@
                     <mat-icon>manage_accounts</mat-icon>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
-                    <div *ngIf="canAccess"><button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button></div>
-                    <div *ngIf="canAccess"><button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button></div>
+                    <div *ngIf="canAccess && !isAdminLogin"><button mat-menu-item (click)="onProfile()"><mat-icon>account_circle</mat-icon>Profile</button></div>
+                    <div *ngIf="canAccess  && !isAdminLogin"><button mat-menu-item (click)="onForgetPassword()"><mat-icon>lock</mat-icon>Change Password</button></div>
                     <!-- <div><button mat-menu-item (click)="onHelp()"><mat-icon>help_outline</mat-icon>Help</button></div> -->
                     <div *ngIf="canAccess"><button  mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button></div>
                     <div *ngIf="!canAccess"><button  mat-menu-item (click)="onLogin()"><mat-icon>login</mat-icon>Login</button></div>

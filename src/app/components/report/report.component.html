@@ -32,14 +32,17 @@
   <form (ngSubmit)="saveReport(patientForm)" #patientForm="ngForm" enctype="multipart/form-data">
     <div class="row secondRow">
       <!-- First row with 3 inputs -->
-      <div class="col-md-4 col-sm-12 columns">
+      <div class="col-md-6 col-sm-12 columns">
         <label>Upload XRay*</label>
         <input (change)="this.onFilechange($event)" required [(ngModel)]="model.XRayReportFileName"
           name="XRayReportFileName" class="form-control custom-input" type="file" id="formFile"
           placeholder="Please Enter XRay Report">
         <div class="error"
           *ngIf="patientForm.controls['XRayReportFileName']?.touched && patientForm.controls['XRayReportFileName'].errors?.['required']">
-          Name is required</div>
+          Image is required</div>
+      </div>
+      <div  class="col-md-6 col-sm-12 columns">
+        <img src="{{xrayImage}}" width="100%" height="200px">
       </div>
     </div>
     <div class="row secondRow">
