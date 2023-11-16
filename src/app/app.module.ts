@@ -15,6 +15,7 @@ import { AlertModule } from './_alert';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from '../app/spinner/spinner.component';
+// import { DicomViewerModule } from 'ng-dicomviewer';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SpinnerComponent } from '../app/spinner/spinner.component';
     SharedModule,
     AgGridModule,
     AlertModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    // DicomViewerModule
   ],
   providers: [
     {

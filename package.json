@@ -23,7 +23,13 @@
     "ag-grid-angular": "^30.2.0",
     "ag-grid-community": "^30.2.0",
     "bootstrap": "^5.3.2",
+    "cornerstone-core": "^2.6.1",
+    "cornerstone-math": "^0.1.10",
+    "cornerstone-tools": "^2.5.0",
+    "cornerstone-wado-image-loader": "^4.13.2",
+    "dicom-parser": "^1.8.21",
     "font-awesome": "^4.7.0",
+    "ng-dicomviewer": "^0.1.38",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -12,6 +12,9 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
+  @ViewChild('dicomCanvas') dicomCanvas!: ElementRef;
+  cornerstone: any;
+  cornerstoneWADOImageLoader: any;
   file: any;
   options = {
     autoClose: true,
@@ -174,6 +177,22 @@ export class ReportComponent implements OnInit {
     this.file = event.target.files[0];
     let fileType=this.file.name.split('.')[1];
     // console.log(fileType.toString().toUpperCase());
+    
+    //  for diacom image
+
+    // if (fileType.toString().toLowerCase() === "dicom") {
+    //   this.xrayImage='';
+    //   const element = this.dicomCanvas.nativeElement;
+    //   this.cornerstone.enable(element);
+
+    //   this.cornerstoneWADOImageLoader.external.cornerstone = this.cornerstone;
+
+    //   const imageId = this.cornerstoneWADOImageLoader.wadouri.fileManager.add(this.file);
+    //   this.cornerstone.loadImage(imageId).then((image:any) => {
+    //     this.cornerstone.displayImage(element, image);
+    //   });
+    //   return;
+    // }
     if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3).toString().toUpperCase() != "DCM"
       && this.file.type != "image/jpeg" && fileType.toString().toLowerCase() !== "dicom") {
       this.alertService.error("Invalid File Format. Please Choose DCM/DICOM/JPEG format", this.options);
@@ -191,7 +210,22 @@ export class ReportComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
     console.log("x-ray image base 64",this.xrayImage);
+
+    let ImageUrl: any = "";
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      ImageUrl = event.target.result;
+      var image = new Image();
+      image.src = ImageUrl;//"data:image/jpg;base64," + data.d;
+
+      var w = window.open("");
+      w?.document.write(image.outerHTML);
+    }
+    reader.readAsDataURL(this.file);
+
   }
+
+
   onCardiacSizeChanged(event: any) {
     console.log(event);
 
@@ -334,7 +368,7 @@ export class ReportComponent implements OnInit {
         this.onReset();
       }
       else if (result === 'showReport') {
-        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid+".jpeg";
+        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid + ".jpeg";
         window.open(reportPath);
       }
     });
