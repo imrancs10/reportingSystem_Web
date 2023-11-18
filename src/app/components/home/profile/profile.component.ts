@@ -55,14 +55,13 @@ export class ProfileComponent implements OnInit {
       "state": form.value.state,
       "city": form.value.city,
       "pinCode": form.value.pincode,
-      // "password": "string",
       "logoFileName": this.LogofileName,
       "logoBase64":"",
     }
     body.logoBase64=this.newLogo;
-    console.log(body);
+    // console.log(body);
     this.business.updateOrgProfileData(body).subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       
     },error=>{
       this.alert.error('Error Please try again',this.options);

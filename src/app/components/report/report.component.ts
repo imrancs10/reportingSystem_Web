@@ -105,6 +105,11 @@ export class ReportComponent implements OnInit {
   BronchoVascularMarking = "";
   BronchoVascularMarkingSide = ""
   BronchoVascularMarkingRegion = "";
+  isLungFieldFinding:any='Nil';
+  isMediastinumFinding:any='Nil';
+  isCadiacInfoFinding:any='Nil';
+  isPleuraInfomationFinding:any='Nil';
+  isChestWallInfoFinding:any='Nil';
   opacity = "";
   opacitySide = "";
   opacityRegion = "";
@@ -334,6 +339,7 @@ export class ReportComponent implements OnInit {
       this.openDialog('fields');
       return
     }
+    console.log(this.model);
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
     this.model.orgName = sessionStorage.getItem("Name");
@@ -416,7 +422,11 @@ export class ReportComponent implements OnInit {
     this.openCardicShaped = false;
     this.ribnumber = false;
     this.fileName = '';
-    // document.body.removeChild(this.iframe);
+    this.isLungFieldFinding = 'Nil';
+    this.isMediastinumFinding = 'Nil';
+    this.isCadiacInfoFinding = 'Nil';
+    this.isPleuraInfomationFinding = 'Nil';
+    this.isChestWallInfoFinding = 'Nil';
   }
 
   onImageUpload(event: any) {
@@ -431,5 +441,127 @@ export class ReportComponent implements OnInit {
     }
   }
 
-
+  onOptionChange(){
+    console.log(this.isLungFieldFinding);
+    if(this.isLungFieldFinding==='Nil'){
+      this.model.BronchoVascularMarking='Normal';
+      this.model.BronchoVascularMarkingRegion='';
+      this.model.BronchoVascularMarkingSide='';
+      this.model.opacity='Nil';
+      this.model.opacityRegion='';
+      this.model.opacitySide='';
+      this.model.cavity='Nil';
+      this.model.cavitySide='';
+      this.model.cavityRegion='';
+      this.model.masses='Nil';
+      this.model.massesRegion='';
+      this.model.massesSide='';
+      this.model.hilum='Normal';
+      this.model.hilumSide='Bilateral';
+      this.model.ProminentHilumSpecify='';
+    }
+    else{
+      this.model.BronchoVascularMarking="";
+      this.model.BronchoVascularMarkingRegion='';
+      this.model.BronchoVascularMarkingSide='';
+      this.model.opacity="";
+      this.model.opacityRegion='';
+      this.model.opacitySide='';
+      this.model.cavity="";
+      this.model.cavitySide='';
+      this.model.cavityRegion='';
+      this.model.masses="";
+      this.model.massesRegion='';
+      this.model.massesSide='';
+      this.model.hilum="";
+      this.model.hilumSide="";
+      this.model.ProminentHilumSpecify='';
+    }
+  }
+  onOptionChangeMediastinum(){
+    if(this.isMediastinumFinding==='Nil'){
+      this.model.trachea='Central';
+      this.model.tracheaShiftSide='';
+      this.model.mediastinal='Nil';
+      this.model.mediastinalShiftSide='';
+      this.model.LymphNodes='Nil';
+    }
+    else{
+      this.model.trachea="";
+      this.model.tracheaShiftSide='';
+      this.model.mediastinal='';
+      this.model.mediastinalShiftSide='';
+      this.model.LymphNodes='';
+    }
+  }
+  onOptionChangeCadiacInfo(){
+    if(this.isCadiacInfoFinding==='Nil'){
+      this.model.CardiacSize='Nil';
+      this.model.CardiacShape='Normal';
+      this.model.CardiacShapeAbnormal='';
+      this.model.AorticKnuckle='Nil';
+      this.model.AorticKnuckleAbnormal='Nil';
+      this.model.AorticKnuckleCalcification='Nil';
+      this.model.AorticKnuckleUnfoldingofAorta='Nil';
+    }
+    else{
+      this.model.CardiacSize='';
+      this.model.CardiacShape='';
+      this.model.CardiacShapeAbnormal='';
+      this.model.AorticKnuckle='';
+      this.model.AorticKnuckleAbnormal='';
+      this.model.AorticKnuckleCalcification='';
+      this.model.AorticKnuckleUnfoldingofAorta='';
+    }
+  }
+  onOptionChangePleuraInfomation(){
+    if(this.isPleuraInfomationFinding==='Nil'){
+      this.model.CostophrenicAnglesSide='Bilateral';
+      this.model.CostophrenicAngles='Normal';
+      this.model.Pneumothorax='Nil';
+      this.model.PneumothoraxSide='';
+    }
+    else{
+      this.model.CostophrenicAnglesSide='';
+      this.model.CostophrenicAngles='';
+      this.model.Pneumothorax='';
+      this.model.PneumothoraxSide='';
+    }
+  }
+  onOptionChangeChestWallInfo(){
+    if(this.isChestWallInfoFinding==='Nil'){
+      this.model.BonyCage='Nil';
+      this.model.BonyCageSide='';
+      this.model.Finding='';
+      this.model.SoftTissue='Normal';
+      this.model.SoftTissueAbnormal='';
+      this.model.SoftTissueSide='';
+      this.model.FractureRibNumber=null;
+      this.model.FractureSide='';
+      this.model.HemiDiaphragm='Normal';
+      this.model.HemiDiaphragmAbormal='';
+      this.model.HemiDiaphragmSide='Bilateral';
+      this.model.BreastShadow='Nil';
+      this.model.BreastShadowAbnormal='';
+      this.model.BreastShadowSide='Bilateral';
+      this.model.Bonylesion='';
+    }
+    else{
+      this.model.BonyCage='';
+      this.model.BonyCageSide='';
+      this.model.Finding='';
+      this.model.SoftTissue='';
+      this.model.SoftTissueAbnormal='';
+      this.model.SoftTissueSide='';
+      this.model.FractureRibNumber=null;
+      this.model.FractureSide='';
+      this.model.HemiDiaphragm='';
+      this.model.HemiDiaphragmAbormal='';
+      this.model.HemiDiaphragmSide='';
+      this.model.BreastShadow='';
+      this.model.BreastShadowAbnormal='';
+      this.model.BreastShadowSide='';
+      this.model.Bonylesion='';
+    }
+  }
 }

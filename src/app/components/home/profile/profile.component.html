@@ -69,6 +69,7 @@
                                 name="name"
                                 required
                                 [(ngModel)]="name"
+                                disabled
                               />
                             </div>
                             <div class="error" *ngIf="personalForm.controls['name']?.touched && personalForm.controls['name'].errors?.['required']">
@@ -88,6 +89,7 @@
                                 required
                                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                 [(ngModel)]="email"
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -113,6 +115,7 @@
                                 required
                                 [(ngModel)]="fname"
                                 name="fname"
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -132,6 +135,7 @@
                                 [(ngModel)]="lname"
                                 placeholder="Last Name"
                                 name="lname"
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -171,6 +175,7 @@
                                 name="state"
                                 required
                                 [(ngModel)]="state"
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -190,6 +195,7 @@
                                 name="pincode"
                                 required
                                 [(ngModel)]="pincode"
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -211,6 +217,7 @@
                                 name="city"
                                 [(ngModel)]="city"
                                 required
+                                disabled
                               />
                             </div>
                             <div class="error"
@@ -230,6 +237,7 @@
                                 name="phone"
                                 [(ngModel)]="phone"
                                 required
+                                disabled
                               />
                             </div>
                             <div class="error"

@@ -33,3 +33,13 @@
     display: flex;
   }
   
+  .eachField{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .eachFieldFindings{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }

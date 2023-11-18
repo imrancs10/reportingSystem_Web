@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
   todayYear:any;
   OrganizationName:any;
+  showArrow:boolean=false;
   constructor(public route:Router){
   }
   ngOnInit(): void {
     
   }
+  // navigateToAnotherPage(){
+  //   this.route.navigate(['/report']);
+  // }
 }
