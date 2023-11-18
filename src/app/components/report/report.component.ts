@@ -334,7 +334,67 @@ export class ReportComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 
+  newSetValues(){
+    if(this.isLungFieldFinding==='Nil'){
+      this.model.BronchoVascularMarking='Normal';
+      this.model.BronchoVascularMarkingRegion='';
+      this.model.BronchoVascularMarkingSide='';
+      this.model.opacity='Nil';
+      this.model.opacityRegion='';
+      this.model.opacitySide='';
+      this.model.cavity='Nil';
+      this.model.cavitySide='';
+      this.model.cavityRegion='';
+      this.model.masses='Nil';
+      this.model.massesRegion='';
+      this.model.massesSide='';
+      this.model.hilum='Normal';
+      this.model.hilumSide='Bilateral';
+      this.model.ProminentHilumSpecify='';
+    }
+    if(this.isMediastinumFinding==='Nil'){
+      this.model.trachea='Central';
+      this.model.tracheaShiftSide='';
+      this.model.mediastinal='Nil';
+      this.model.mediastinalShiftSide='';
+      this.model.LymphNodes='Nil';
+    }
+    if(this.isCadiacInfoFinding==='Nil'){
+      this.model.CardiacSize='Nil';
+      this.model.CardiacShape='Normal';
+      this.model.CardiacShapeAbnormal='';
+      this.model.AorticKnuckle='Nil';
+      this.model.AorticKnuckleAbnormal='Nil';
+      this.model.AorticKnuckleCalcification='Nil';
+      this.model.AorticKnuckleUnfoldingofAorta='Nil';
+    }
+    if(this.isPleuraInfomationFinding==='Nil'){
+      this.model.CostophrenicAnglesSide='Bilateral';
+      this.model.CostophrenicAngles='Normal';
+      this.model.Pneumothorax='Nil';
+      this.model.PneumothoraxSide='';
+    }
+    if(this.isChestWallInfoFinding==='Nil'){
+      this.model.BonyCage='Nil';
+      this.model.BonyCageSide='';
+      this.model.Finding='';
+      this.model.SoftTissue='Normal';
+      this.model.SoftTissueAbnormal='';
+      this.model.SoftTissueSide='';
+      this.model.FractureRibNumber=null;
+      this.model.FractureSide='';
+      this.model.HemiDiaphragm='Normal';
+      this.model.HemiDiaphragmAbormal='';
+      this.model.HemiDiaphragmSide='Bilateral';
+      this.model.BreastShadow='Nil';
+      this.model.BreastShadowAbnormal='';
+      this.model.BreastShadowSide='Bilateral';
+      this.model.Bonylesion='';
+    }
+  }
+
   saveReport(patientForm: NgForm) {
+    this.newSetValues();
     if (patientForm.invalid) {
       this.openDialog('fields');
       return
@@ -442,7 +502,7 @@ export class ReportComponent implements OnInit {
   }
 
   onOptionChange(){
-    console.log(this.isLungFieldFinding);
+    // console.log(this.isLungFieldFinding);
     if(this.isLungFieldFinding==='Nil'){
       this.model.BronchoVascularMarking='Normal';
       this.model.BronchoVascularMarkingRegion='';
