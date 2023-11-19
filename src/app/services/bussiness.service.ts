@@ -107,6 +107,14 @@ export class BussinessService {
     });
     return this.http.put(this.apiUrl + 'Auth/user/updateprofile',body,{ headers: httpHeaders });
   }
+
+  updateOrgnizationHeader(body:any):Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    return this.http.put(this.apiUrl + 'Auth/user/showHeader',body,{ headers: httpHeaders });
+  }
   
   private extractData(res: any) {
     let body = res;
