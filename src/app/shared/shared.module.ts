@@ -17,6 +17,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
   imports:[
@@ -32,7 +33,8 @@ import {MatSortModule} from '@angular/material/sort';
     AlertModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   exports: [
     HeaderComponent,
@@ -49,7 +51,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
 })
 export class SharedModule {}

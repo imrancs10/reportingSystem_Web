@@ -4,6 +4,7 @@ import { BussinessService } from 'src/app/services/bussiness.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-organization',
@@ -11,19 +12,15 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./organization.component.scss']
 })
 export class OrganizationComponent implements OnInit {
-  options = {
-    autoClose: true,
-    keepAfterRouteChange: false
-  };
   displayedColumns: string[] = ['sendemail','header', 'name', 'email', 'firstName','lastName','mobile','state','city','pinCode'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   rowData: any = [];
-  showHeader:any=true;
   constructor(
-    public businessData: BussinessService, protected alertService: AlertService
+    public businessData: BussinessService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -44,11 +41,19 @@ export class OrganizationComponent implements OnInit {
       "Mobile": data.mobile,
     }
     this.businessData.sendEmailtoOrganization(body).subscribe((response) => {
-      this.alertService.success('Email Sent Successfully', this.options);
+      this.openSnackbar('Email Sent Successfully');
     },
       error => {
-        this.alertService.error('Error happens, please contact IT Administrator', this.options);
+        this.openSnackbar('Error happens, please contact IT Administrator');
       });
+  }
+
+  openSnackbar(msg:any){
+    this._snackBar.open(msg, 'X', {
+      duration:5*1000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 
   onChangeHeader(data:any){
@@ -66,13 +71,11 @@ export class OrganizationComponent implements OnInit {
     }
     this.businessData.updateOrgnizationHeader(body).subscribe((res:any)=>{
       console.log(res);
-      this.alertService.success('Header changes on report successfully', this.options);
+      this.openSnackbar('Header changes on report successfully');
     },error=>{
       console.log(error);
-      this.alertService.error('Error happens, please contact IT Administrator', this.options);
-    }
-    )
-    
+      this.openSnackbar('Error happens, please contact IT Administrator');
+    })
   }
   
   onGetAllData() {
