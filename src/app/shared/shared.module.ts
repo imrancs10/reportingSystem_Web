@@ -14,7 +14,10 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { CommonModule } from '@angular/common';
 import { AlertModule } from '../_alert';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent],
   imports:[
@@ -27,7 +30,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
-    AlertModule
+    AlertModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule
   ],
   exports: [
     HeaderComponent,
@@ -42,6 +49,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule
   ],
 })
 export class SharedModule {}

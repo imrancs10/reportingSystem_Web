@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/_alert';
 import { AuthService } from 'src/app/services/auth.service';
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   remeberMe: boolean = false;
   PasswordToolTip:any='Show Password';
   @ViewChild('loginForm') loginForm!: NgForm
-  constructor(public route: Router, public auth: AuthService, protected alertService: AlertService) { }
+  constructor(public route: Router, public auth: AuthService, protected alertService: AlertService,private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
     if (sessionStorage.getItem('User')) {
       console.log(sessionStorage.getItem('User'));
@@ -46,9 +47,7 @@ export class LoginComponent implements OnInit {
       "Role": "User"
     }
     this.auth.loginUser(model).subscribe((res) => {
-      // console.log(res);
-      //this.pdfUrl = this.getSafeUrl(pdfBlob);
-      //this.onPdfLoad();
+      this.openSnackbar('Login Successfully..');
       this.auth.setUserRole('User');
       sessionStorage.setItem('userId', res?.userResponse?.id);
       sessionStorage.setItem('Role', 'User');
@@ -64,13 +63,20 @@ export class LoginComponent implements OnInit {
         this.alertService.error('User Name or Password are Incorrect.', this.options);
         console.log("Error")
       });
-
-
-    // console.log('userlogin',form.value);
   }
+
+  openSnackbar(msg:any){
+    this._snackBar.open(msg, 'X', {
+      duration:5*1000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
   onRegister() {
     this.route.navigate(['/register']);
   }
+
   onShowPassword(){
     this.showPassword=!this.showPassword;
     if(this.showPassword){
