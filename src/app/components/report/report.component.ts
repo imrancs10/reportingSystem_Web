@@ -403,7 +403,7 @@ export class ReportComponent implements OnInit {
     console.log(this.model);
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
-    this.model.showHeader = sessionStorage.getItem('showHeader');
+    this.model.showHeader = sessionStorage.getItem('showHeader') == 'true';
     this.model.orgName = sessionStorage.getItem("Name");
 
     const reader = new FileReader();
