@@ -460,6 +460,7 @@ export class ReportComponent implements OnInit {
   }
 
   onReset() {
+    this.xrayImage='';
     this.showPreview = false;
     this.patientForm.reset();
     this.openfirst = false;

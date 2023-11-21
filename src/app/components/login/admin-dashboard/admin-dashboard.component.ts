@@ -33,15 +33,11 @@ export class AdminDashboardComponent implements OnInit {
       "Role": "Admin"
     }
     this.auth.loginUser(model).subscribe((res) => {
-      // console.log(res);
-      //this.pdfUrl = this.getSafeUrl(pdfBlob);
-      //this.onPdfLoad();
-      //this.auth.setUserRole('Admin');
-      this.showPreview = false;
       sessionStorage.setItem('userId', res?.userResponse?.id);
       sessionStorage.setItem('Role', 'Admin');
       sessionStorage.setItem('userName', form.value.username);
-      this.route.navigate(['/dashboard']);
+      this.route.navigate(['/organization']);
+      this.showPreview = false;
     },
       error => {
         this.showPreview = false;
