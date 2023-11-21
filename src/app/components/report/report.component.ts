@@ -435,10 +435,10 @@ export class ReportComponent implements OnInit {
         document.body.removeChild(this.iframe);
         this.onReset();
       }
-      else if (result === 'showReport') {
-        var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid + ".jpeg";
-        window.open(reportPath);
-      }
+      // else if (result === 'showReport') {
+      //   var reportPath = "http://api.imgdotpix.in/XRayReport/" + this.model.uhid + ".jpeg";
+      //   window.open(reportPath);
+      // }
     });
   }
   iframe: any;
