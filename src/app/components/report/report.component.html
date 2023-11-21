@@ -36,7 +36,7 @@
         <label>Upload XRay*</label>
         <input (change)="this.onFilechange($event)" required [(ngModel)]="model.XRayReportFileName"
           name="XRayReportFileName" class="form-control custom-input" type="file" id="formFile"
-          placeholder="Please Enter XRay Report">
+          placeholder="Please Enter XRay Report" accept="image/jpeg">
         <div class="error"
           *ngIf="patientForm.controls['XRayReportFileName']?.touched && patientForm.controls['XRayReportFileName'].errors?.['required']">
           Image is required</div>
@@ -102,7 +102,7 @@
       <div class="col-md-4 col-sm-12 columns">
         <label>Date*</label>
         <input type="date" [(ngModel)]="model.date" name="date" class="form-control custom-input"
-          placeholder="dd/mm/yyyy" [min]="mindate" [max]="maxdate" required />
+          placeholder="dd/mm/yyyy" [max]="maxdate.toISOString().split('T')[0]" required />
         <div class="error"
           *ngIf="patientForm.controls['date']?.touched && patientForm.controls['date'].errors?.['required']">Date is
           required</div>

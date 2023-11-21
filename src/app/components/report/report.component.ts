@@ -74,7 +74,7 @@ export class ReportComponent implements OnInit {
     "showHeader": true,
     "orgName": "",
     "XRayReportFileName": "",
-    "XRayReportBase64": ""
+    "XRayReportBase64": "",
   };
 
   @ViewChild('patientForm') patientForm!: NgForm;
@@ -100,7 +100,7 @@ export class ReportComponent implements OnInit {
   pdfUrl: any;
   maxdate: any;
   mindate: any;
-
+  date:any;
   fileName: any = '';
   CardiacShape: any = "";
   BronchoVascularMarking = "";
@@ -165,11 +165,15 @@ export class ReportComponent implements OnInit {
     protected alertService: AlertService
   ) {
     let todayDate = new Date();
-    this.mindate = todayDate;
+    // this.mindate = todayDate;
     this.maxdate = todayDate;
   }
 
   ngOnInit(): void {
+    this.date=new Date();
+    let todayDate = new Date();
+    // this.mindate = todayDate;
+    this.maxdate = todayDate;
     this.orgName = sessionStorage.getItem("Name");
     this.logoName = "http://api.imgdotpix.in/OrganizationLogo/" + sessionStorage.getItem("orgLogoName");
   }
@@ -199,9 +203,8 @@ export class ReportComponent implements OnInit {
     //   });
     //   return;
     // }
-    if (this.file.name.substr(this.file.name.lastIndexOf(".") + 1, 3).toString().toUpperCase() != "DCM"
-      && this.file.type != "image/jpeg" && fileType.toString().toLowerCase() !== "dicom") {
-      this.alertService.error("Invalid File Format. Please Choose DCM/DICOM/JPEG format", this.options);
+    if (this.file.type != "image/jpeg") {
+      this.alertService.error("Invalid File Format. Please Choose JPEG format", this.options);
       event.target.value = '';
       this.file = '';
       this.xrayImage = '';
