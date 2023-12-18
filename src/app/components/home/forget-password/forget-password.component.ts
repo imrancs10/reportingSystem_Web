@@ -26,7 +26,7 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onChangePassword(form:NgForm){
-    console.log(form.value);
+    // console.log(form.value);
     if(form.invalid) return;
     if(this.newPassword!=this.renewPassword){
       this.alertService.error('Please check new password is not same as Re-Enter password ', this.options);

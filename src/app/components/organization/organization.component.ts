@@ -70,7 +70,7 @@ export class OrganizationComponent implements OnInit {
       "showHeader":data.showHeader,
     }
     this.businessData.updateOrgnizationHeader(body).subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       this.openSnackbar('Header changes on report successfully');
     },error=>{
       console.log(error);

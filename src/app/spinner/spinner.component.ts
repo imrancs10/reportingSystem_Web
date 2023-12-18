@@ -12,7 +12,7 @@ export class SpinnerComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log('loader')
+    // console.log('loader')
     console.log(this.loader.isLoading$);
   }
 }

@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     return this.authService.userRole$.pipe(
       map((role: any) => {
         let currentUserRole = sessionStorage.getItem('Role');
-        console.log(state.url);
+        // console.log(state.url);
         if (currentUserRole === 'Admin') {
           return true; // Allow access for admin
         }

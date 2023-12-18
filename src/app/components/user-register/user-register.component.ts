@@ -36,7 +36,7 @@ export class UserRegisterComponent implements OnInit {
       this.alertService.error('Please Upload Organization Logo',this.options)
       return;
     }
-    console.log(event.target.files[0]);
+    // console.log(event.target.files[0]);
     if (
       event.target.files[0].type === 'image/svg+xml' ||
       event.target.files[0].type === 'image/jpeg' ||

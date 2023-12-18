@@ -183,7 +183,7 @@ export class ReportComponent implements OnInit {
       this.xrayImage = '';
       return;
     }
-    console.log(event.target.files[0]);
+    // console.log(event.target.files[0]);
     this.file = event.target.files[0];
     let fileType = this.file.name.split('.')[1];
     // console.log(fileType.toString().toUpperCase());
@@ -218,7 +218,7 @@ export class ReportComponent implements OnInit {
       };
       reader.readAsDataURL(this.file);
     }
-    console.log("x-ray image base 64", this.xrayImage);
+    // console.log("x-ray image base 64", this.xrayImage);
 
     let ImageUrl: any = "";
     var reader = new FileReader();
@@ -236,7 +236,7 @@ export class ReportComponent implements OnInit {
 
 
   onCardiacSizeChanged(event: any) {
-    console.log(event);
+    // console.log(event);
 
     if (event.target.value === 'Enlarged') { this.openCardicShaped = true; console.log('enlarged'); }
 
@@ -403,7 +403,7 @@ export class ReportComponent implements OnInit {
       this.openDialog('fields');
       return
     }
-    console.log(this.model);
+    // console.log(this.model);
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');
     this.model.showHeader = sessionStorage.getItem('showHeader') == 'true';
@@ -496,7 +496,7 @@ export class ReportComponent implements OnInit {
   }
 
   onImageUpload(event: any) {
-    console.log(event);
+    // console.log(event);
     if (event.srcElement.files.length != 0) {
       this.fileName = event.srcElement.files[0].name;
       const file: File = event.target.files[0];

@@ -21,7 +21,7 @@ export class BussinessService {
 
   savePatientData(data: any) {
     this.allPatientData = data;
-    console.log(this.allPatientData, 'from service');
+    // console.log(this.allPatientData, 'from service');
   }
 
   getAllPatientData() {

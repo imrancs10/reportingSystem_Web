@@ -20,7 +20,7 @@ export class AuthService {
   userRole$: Observable<string> = this.userRoleSubject.asObservable();
 
   setUserRole(role: string) {
-    console.log(role);
+    // console.log(role);
     this.userRoleSubject.next(role);
   }
   loginUser(model: any): Observable<any> {

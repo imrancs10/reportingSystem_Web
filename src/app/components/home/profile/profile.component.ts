@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
 
   prePopulate(){
     this.business.getOrgDataFromDB().subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       this.name=res.name;
       this.email=res.email;
       this.fname=res.firstName;
@@ -77,7 +77,7 @@ export class ProfileComponent implements OnInit {
       event.target.files[0].type === 'image/png'
     ) {
       this.file = event.target.files[0];
-      console.log(this.file);
+      // console.log(this.file);
       
     } else {
       alert('Invalid File Format. Please Choose jpeg/png/svg/xml format');

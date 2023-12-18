@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(public route: Router, public auth: AuthService, protected alertService: AlertService,private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
     if (sessionStorage.getItem('User')) {
-      console.log(sessionStorage.getItem('User'));
+      // console.log(sessionStorage.getItem('User'));
       let val = sessionStorage.getItem('User');
       this.username = val;
     }
