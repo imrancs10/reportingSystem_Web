@@ -11,6 +11,7 @@ export class HomeHeaderComponent implements OnInit {
   userId:any;
   canAccess:boolean=false;
   isAdminLogin: boolean=false;
+  notificationCount:any=10;
   constructor(private route:Router,private auth:AuthService){
     
   }
@@ -53,6 +54,10 @@ export class HomeHeaderComponent implements OnInit {
   }
   openDashboardPage(){
     this.route.navigate(['/dashboard']);
+  }
+  toggleBell(){
+    console.log('open toggle');
+    
   }
 
 }

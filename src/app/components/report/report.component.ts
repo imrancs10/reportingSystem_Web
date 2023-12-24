@@ -167,6 +167,7 @@ export class ReportComponent implements OnInit {
     let todayDate = new Date();
     // this.mindate = todayDate;
     this.maxdate = todayDate;
+    this.model.date=todayDate.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
@@ -174,6 +175,7 @@ export class ReportComponent implements OnInit {
     let todayDate = new Date();
     // this.mindate = todayDate;
     this.maxdate = todayDate;
+    
     this.orgName = sessionStorage.getItem("Name");
     this.logoName = "http://api.imgdotpix.in/OrganizationLogo/" + sessionStorage.getItem("orgLogoName");
   }
@@ -373,7 +375,7 @@ export class ReportComponent implements OnInit {
       this.model.AorticKnuckleUnfoldingofAorta = 'Nil';
     }
     if (this.isPleuraInfomationFinding === 'Nil') {
-      this.model.CostophrenicAnglesSide = 'Bilateral';
+      this.model.CostophrenicAnglesSide = 'both';
       this.model.CostophrenicAngles = 'Normal';
       this.model.Pneumothorax = 'Nil';
       this.model.PneumothoraxSide = '';
@@ -527,20 +529,20 @@ export class ReportComponent implements OnInit {
       this.model.ProminentHilumSpecify = '';
     }
     else {
-      this.model.BronchoVascularMarking = "";
+      this.model.BronchoVascularMarking = "Normal";
       this.model.BronchoVascularMarkingRegion = '';
       this.model.BronchoVascularMarkingSide = '';
-      this.model.opacity = "";
+      this.model.opacity = "Nil";
       this.model.opacityRegion = '';
       this.model.opacitySide = '';
-      this.model.cavity = "";
+      this.model.cavity = "Nil";
       this.model.cavitySide = '';
       this.model.cavityRegion = '';
-      this.model.masses = "";
+      this.model.masses = "Nil";
       this.model.massesRegion = '';
       this.model.massesSide = '';
-      this.model.hilum = "";
-      this.model.hilumSide = "";
+      this.model.hilum = "Normal";
+      this.model.hilumSide = "Bilateral";
       this.model.ProminentHilumSpecify = '';
     }
   }
@@ -553,11 +555,11 @@ export class ReportComponent implements OnInit {
       this.model.LymphNodes = 'Nil';
     }
     else {
-      this.model.trachea = "";
+      this.model.trachea = "Central";
       this.model.tracheaShiftSide = '';
-      this.model.mediastinal = '';
+      this.model.mediastinal = 'Nil';
       this.model.mediastinalShiftSide = '';
-      this.model.LymphNodes = '';
+      this.model.LymphNodes = 'Nil';
     }
   }
   onOptionChangeCadiacInfo() {
@@ -571,26 +573,26 @@ export class ReportComponent implements OnInit {
       this.model.AorticKnuckleUnfoldingofAorta = 'Nil';
     }
     else {
-      this.model.CardiacSize = '';
-      this.model.CardiacShape = '';
+      this.model.CardiacSize = 'Nil';
+      this.model.CardiacShape = 'Normal';
       this.model.CardiacShapeAbnormal = '';
-      this.model.AorticKnuckle = '';
-      this.model.AorticKnuckleAbnormal = '';
-      this.model.AorticKnuckleCalcification = '';
-      this.model.AorticKnuckleUnfoldingofAorta = '';
+      this.model.AorticKnuckle = 'Nil';
+      this.model.AorticKnuckleAbnormal = 'Nil';
+      this.model.AorticKnuckleCalcification = 'Nil';
+      this.model.AorticKnuckleUnfoldingofAorta = 'Nil';
     }
   }
   onOptionChangePleuraInfomation() {
     if (this.isPleuraInfomationFinding === 'Nil') {
-      this.model.CostophrenicAnglesSide = 'Bilateral';
+      this.model.CostophrenicAnglesSide = 'both';
       this.model.CostophrenicAngles = 'Normal';
       this.model.Pneumothorax = 'Nil';
       this.model.PneumothoraxSide = '';
     }
     else {
-      this.model.CostophrenicAnglesSide = '';
-      this.model.CostophrenicAngles = '';
-      this.model.Pneumothorax = '';
+      this.model.CostophrenicAnglesSide = 'both';
+      this.model.CostophrenicAngles = 'Normal';
+      this.model.Pneumothorax = 'Nil';
       this.model.PneumothoraxSide = '';
     }
   }
@@ -613,20 +615,20 @@ export class ReportComponent implements OnInit {
       this.model.Bonylesion = '';
     }
     else {
-      this.model.BonyCage = '';
+      this.model.BonyCage = 'Nil';
       this.model.BonyCageSide = '';
       this.model.Finding = '';
-      this.model.SoftTissue = '';
+      this.model.SoftTissue = 'Normal';
       this.model.SoftTissueAbnormal = '';
       this.model.SoftTissueSide = '';
       this.model.FractureRibNumber = null;
       this.model.FractureSide = '';
-      this.model.HemiDiaphragm = '';
+      this.model.HemiDiaphragm = 'Normal';
       this.model.HemiDiaphragmAbormal = '';
-      this.model.HemiDiaphragmSide = '';
-      this.model.BreastShadow = '';
+      this.model.HemiDiaphragmSide = 'Bilateral';
+      this.model.BreastShadow = 'Nil';
       this.model.BreastShadowAbnormal = '';
-      this.model.BreastShadowSide = '';
+      this.model.BreastShadowSide = 'Bilateral';
       this.model.Bonylesion = '';
     }
   }

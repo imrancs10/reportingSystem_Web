@@ -37,6 +37,14 @@
                         </li>
                     </div>
                 </ul>
+                <div *ngIf="canAccess && isAdminLogin"> 
+                    <div class="bell-icon">
+                        <span class="icon" (click)="toggleBell()">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+                        </span>
+                    </div>
+                </div>
                 <button mat-button [matMenuTriggerFor]="beforeMenu">
                     <mat-icon>manage_accounts</mat-icon>
                 </button>
@@ -49,9 +57,6 @@
                     <div *ngIf="!canAccess"><button  mat-menu-item (click)="onRegister()"><mat-icon>account_circle</mat-icon>Signup</button></div>
                     
                 </mat-menu>
-                <!-- <button class="btn btn-primary" type="button">
-                    
-                </button> -->
             </div>
         </div>
     </nav>
