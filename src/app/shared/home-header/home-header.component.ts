@@ -11,7 +11,7 @@ export class HomeHeaderComponent implements OnInit {
   userId:any;
   canAccess:boolean=false;
   isAdminLogin: boolean=false;
-  notificationCount:any=10;
+  notificationCount:any=0;
   allMessages:any=[
     // 'Hii this is Raghav Garg',
     // 'Hello brother Everything is all right',
@@ -60,7 +60,6 @@ export class HomeHeaderComponent implements OnInit {
     this.route.navigate(['/dashboard']);
   }
   toggleBell(){
-    this.notificationCount=0;
     // console.log('open toggle');
     // All Messages API call
   }

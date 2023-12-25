@@ -222,17 +222,17 @@ export class ReportComponent implements OnInit {
     }
     // console.log("x-ray image base 64", this.xrayImage);
 
-    let ImageUrl: any = "";
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-      ImageUrl = event.target.result;
-      var image = new Image();
-      image.src = ImageUrl;//"data:image/jpg;base64," + data.d;
+    // let ImageUrl: any = "";
+    // var reader = new FileReader();
+    // reader.onload = (event: any) => {
+    //   ImageUrl = event.target.result;
+    //   var image = new Image();
+    //   image.src = ImageUrl;//"data:image/jpg;base64," + data.d;
 
-      var w = window.open("");
-      w?.document.write(image.outerHTML);
-    }
-    reader.readAsDataURL(this.file);
+    //   var w = window.open("");
+    //   w?.document.write(image.outerHTML);
+    // }
+    // reader.readAsDataURL(this.file);
 
   }
 
@@ -427,6 +427,23 @@ export class ReportComponent implements OnInit {
           this.openDialog('pdfError');
         });
     };
+  }
+
+  openInNewPortal() {
+    // Open the x-ray image in a new window or tab
+    if (this.xrayImage) {
+      let ImageUrl: any = "";
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        ImageUrl = event.target.result;
+        var image = new Image();
+        image.src = ImageUrl;//"data:image/jpg;base64," + data.d;
+
+        var w = window.open("");
+        w?.document.write(image.outerHTML);
+      }
+      reader.readAsDataURL(this.file);
+    }
   }
 
   openDialog(mesg: any) {

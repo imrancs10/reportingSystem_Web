@@ -4,20 +4,15 @@
 </div>
 <div class="loading-overlay" [ngClass]="{ 'show': showPreview }"></div>
 <div class="row">
-  <div class="col-md-5">   
+  <div class="col-md-6 col-sm-12 mobile-view">   
     <img [src]="logoName" alt="" class=" mb-3 mt-4" style="width: 60px;height: 60px;float: right;">
   </div>
-  <div class="col-md-7">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="col-md-6 col-sm-12 mobile-view">
+    <!-- <div class="row">
+      <div class="col-md-12"> -->
         <h3 style="text-align: left;margin-top :20px;font-size: 18px;">{{orgName}}<br>Investigation : X-Ray Chest PA view</h3> 
-       </div>
-    </div>
-    <!--<div class="row">
-      <div class="col-md-12">
-        {{orgName}}
-      </div>
-    </div>-->
+      <!-- </div>
+    </div> -->
   </div>
 </div>
 
@@ -41,12 +36,18 @@
           *ngIf="patientForm.controls['XRayReportFileName']?.touched && patientForm.controls['XRayReportFileName'].errors?.['required']">
           Image is required</div>
       </div>
-      <div  class="col-md-6 col-sm-12 columns" *ngIf="xrayImage && xrayImage!==''">
-        <img src="{{xrayImage}}" height="200px">
+      <div class="col-md-6 col-sm-12 columns" *ngIf="xrayImage && xrayImage!==''">
+        <div style="position: relative; display: inline-block;">
+          <img src="{{xrayImage}}" height="200px" style="display: block;">
+          <a (click)="openInNewPortal()" style="position: absolute; top: 10px; right: 10px; color: #333; text-decoration: none;">
+            <i class="fas fa-external-link-alt" style="font-size: 24px; cursor: pointer;"></i>
+          </a>
+        </div>
         <!-- <div>
           <canvas #dicomCanvas></canvas>
         </div> -->
       </div>
+      
     </div>
     <div class="row secondRow">
       <!-- First row with 3 inputs -->
