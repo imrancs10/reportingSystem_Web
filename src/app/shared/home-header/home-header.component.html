@@ -45,8 +45,13 @@
                         </span>
                     </div>
                     <mat-menu #beforeMenu="matMenu" xPosition="before">
-                        <div mat-menu-item *ngFor="let msg of allMessages">
-                            <p>{{msg}}</p>
+                        <div *ngIf="notificationCount > 0">
+                            <div mat-menu-item *ngFor="let msg of allMessages">
+                                <p>{{msg}}</p>
+                            </div>
+                        </div>
+                        <div mat-menu-item >
+                            <p>No Notifications!!</p>
                         </div>
                     </mat-menu>
                 </div>
