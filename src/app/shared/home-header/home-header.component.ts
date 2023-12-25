@@ -12,6 +12,10 @@ export class HomeHeaderComponent implements OnInit {
   canAccess:boolean=false;
   isAdminLogin: boolean=false;
   notificationCount:any=10;
+  allMessages:any=[
+    // 'Hii this is Raghav Garg',
+    // 'Hello brother Everything is all right',
+  ];
   constructor(private route:Router,private auth:AuthService){
     
   }
@@ -56,8 +60,9 @@ export class HomeHeaderComponent implements OnInit {
     this.route.navigate(['/dashboard']);
   }
   toggleBell(){
-    console.log('open toggle');
-    
+    this.notificationCount=0;
+    // console.log('open toggle');
+    // All Messages API call
   }
 
 }

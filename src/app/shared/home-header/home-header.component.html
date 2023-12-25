@@ -39,11 +39,16 @@
                 </ul>
                 <div *ngIf="canAccess && isAdminLogin"> 
                     <div class="bell-icon">
-                        <span class="icon" (click)="toggleBell()">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+                        <span class="icon" (click)="toggleBell()" [matMenuTriggerFor]="beforeMenu">
+                        <i class="fas fa-bell" style="font-size:18px"></i>
+                        <span class="badge" *ngIf="notificationCount > 0">{{ (notificationCount>10)?'10+':notificationCount }}</span>
                         </span>
                     </div>
+                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                        <div mat-menu-item *ngFor="let msg of allMessages">
+                            <p>{{msg}}</p>
+                        </div>
+                    </mat-menu>
                 </div>
                 <button mat-button [matMenuTriggerFor]="beforeMenu">
                     <mat-icon>manage_accounts</mat-icon>
