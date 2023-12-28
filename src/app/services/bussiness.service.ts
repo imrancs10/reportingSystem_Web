@@ -115,6 +115,26 @@ export class BussinessService {
     });
     return this.http.put(this.apiUrl + 'Auth/user/showHeader',body,{ headers: httpHeaders });
   }
+
+  postMessage(values:any){
+    console.log(values);
+    let body={
+      "contactedOrgName": values.contactedOrgName,
+      "contactedUserName": values.contactedUserName,
+      "contactedEmail": values.contactedEmail,
+      "contactedMsg": values.contactedMsg,
+      "date":new Date(),
+  }
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    return this.http.post(this.apiUrl+'',body,{ headers: httpHeaders });
+  }
+
+  getAllNotifications(){
+    return this.http.get(this.apiUrl+'');
+  }
   
   private extractData(res: any) {
     let body = res;
