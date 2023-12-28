@@ -23,7 +23,10 @@ export class HomeHeaderComponent implements OnInit {
     this.userId = sessionStorage.getItem("userId");
     if(this.userId) this.canAccess=true;
     else this.canAccess=false;
+    if(this.isAdminLogin) this.onGetAllNotifications();
+  }
 
+  onGetAllNotifications(){
     this.businesServ.getAllNotifications().subscribe((res:any)=>{
       console.log(res);
       //unread read flag only show read mssgs....
