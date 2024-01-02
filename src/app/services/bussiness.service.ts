@@ -124,7 +124,7 @@ export class BussinessService {
       "contactedEmail": values.contactedEmail,
       "contactedMsg": values.contactedMsg,
       "date":new Date(),
-  }
+    }
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'

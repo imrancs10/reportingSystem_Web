@@ -21,6 +21,7 @@ export class UserRegisterComponent implements OnInit {
   showPreview: boolean = false;
   @ViewChild('registerForm') registerForm!: NgForm;
   termsCondition: boolean = false;
+  allStates:any=[];
   constructor(
     public route: Router,
     public dialog: MatDialog,
@@ -30,6 +31,36 @@ export class UserRegisterComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.termsCondition = false;
+    this.allStates = [
+      "Andhra Pradesh",
+      "Arunachal Pradesh",
+      "Bihar",
+      "Chhattisgarh",
+      "Goa",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jharkhand",
+      "Karnataka",
+      "Kerala",
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Odisha",
+      "Punjab",
+      "Rajasthan",
+      "Sikkim",
+      "Tamil Nadu",
+      "Telangana",
+      "Tripura",
+      "Uttar Pradesh",
+      "Uttarakhand",
+      "West Bengal"
+    ];
+    
   }
   onFilechange(event: any) {
     if (!event.target.files) {

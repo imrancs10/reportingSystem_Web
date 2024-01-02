@@ -1,78 +1,135 @@
-
-<div class="wrapper">
-  <div>
-    <app-home-header></app-home-header>
-  </div>
+<div class="main">
+  <app-home-header></app-home-header>
   <div class="container">
     <div class="card">
-      <h2 class="card-header" style="background-color: rgb(144, 144, 163); text-align: center">
-        Login Dashboard
-      </h2>
-      <div class="card-body">
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" [(ngModel)]="userType" (change)="onRadioChange($event)" value="user" class="btn-check"
-            name="loginUser" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="btnradio1">Organization</label>
+      <div >
+        <h2
+          class="card-header"
+          style="background-color: rgb(144, 144, 163); text-align: center"
+        >
+          Login Dashboard
+        </h2>
+        <div class="card-body">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            <input
+              type="radio"
+              [(ngModel)]="userType"
+              (change)="onRadioChange($event)"
+              value="user"
+              class="btn-check"
+              name="loginUser"
+              id="btnradio1"
+              autocomplete="off"
+              checked
+            />
+            <label class="btn btn-outline-primary" for="btnradio1"
+              >Organization</label
+            >
 
-          <input type="radio" [(ngModel)]="userType" class="btn-check" value="admin" (change)="onRadioChange($event)"
-            name="loginUser" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btnradio2">Admin</label>
-        </div>
-        <div *ngIf="userType==='admin'">
-          <app-admin-dashboard></app-admin-dashboard>
-        </div>
-        <div *ngIf="userType==='user'">
-          <div class="card-bodys">
-            <h3>Login As Organization</h3>
-            <form (ngSubmit)="onUserLogin(loginForm)" #loginForm="ngForm">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <label>Organization Email *:</label>
-                  <input type="email" required [(ngModel)]="username" name="username" autocomplete="off" class="form-control custom-input"
-                    placeholder="Enter Valid UserName" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
-                  <div class="error"
-                    *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['required']">
-                    Email Address is required
-                  </div>
-                  <div class="error"
-                      *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['pattern']">
+            <input
+              type="radio"
+              [(ngModel)]="userType"
+              class="btn-check"
+              value="admin"
+              (change)="onRadioChange($event)"
+              name="loginUser"
+              id="btnradio2"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="btnradio2">Admin</label>
+          </div>
+          <div *ngIf="userType === 'admin'">
+            <app-admin-dashboard></app-admin-dashboard>
+          </div>
+          <div *ngIf="userType === 'user'">
+            <div class="card-bodys">
+              <h3>Login As Organization</h3>
+              <form (ngSubmit)="onUserLogin(loginForm)" #loginForm="ngForm">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <label>Organization Email *:</label>
+                    <input
+                      type="email"
+                      required
+                      [(ngModel)]="username"
+                      name="username"
+                      autocomplete="off"
+                      class="form-control custom-input"
+                      placeholder="Enter Valid UserName"
+                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    />
+                    <div
+                      class="error"
+                      *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['required']"
+                    >
+                      Email Address is required
+                    </div>
+                    <div
+                      class="error"
+                      *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username'].errors?.['pattern']"
+                    >
                       Email is Invalid
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12" style="padding-top: 5px">
+                    <label>Password *:</label>
+                    <div class="input-group mb-3">
+                      <input
+                        [type]="passText"
+                        required
+                        ngModel
+                        name="Password"
+                        class="form-control custom-input"
+                        placeholder="Please Enter Password"
+                      />
+                      <button
+                        matTooltip="{{ PasswordToolTip }}"
+                        class="btns1"
+                        type="button"
+                        (click)="onShowPassword()"
+                      >
+                        <mat-icon>{{ btnName }}</mat-icon>
+                      </button>
+                    </div>
+                    <div
+                      class="error"
+                      *ngIf="loginForm.controls['Password']?.touched && loginForm.controls['Password'].errors?.['required']"
+                    >
+                      Password is required
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-12 col-sm-12" style="padding-top: 5px;">
-                  <label>Password *:</label>
-                  <div class="input-group mb-3">
-                    <input [type]="passText" required ngModel name="Password" class="form-control custom-input" placeholder="Please Enter Password" />
-                    <button matTooltip={{PasswordToolTip}} class="btns1" type="button" (click)="onShowPassword()" ><mat-icon>{{btnName}}</mat-icon></button>
-                  </div>
-                  <div class="error"
-                    *ngIf="loginForm.controls['Password']?.touched && loginForm.controls['Password'].errors?.['required']">
-                    Password is required
-                  </div>
+                <div
+                  style="
+                    padding-top: 20px;
+                    align-items: center;
+                    text-align: center;
+                  "
+                >
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="loginForm.invalid"
+                  >
+                    Log in
+                  </button>
                 </div>
+              </form>
+              <div style="padding-top: 5px">
+                <p>
+                  New User? Register your organization
+                  <button class="btns" (click)="onRegister()">Here</button>
+                </p>
               </div>
-              <!-- <div class="boxs">
-                <input  type="checkbox" value="" id="flexCheckChecked" name="remeberMe" autocomplete="off"
-                  [(ngModel)]="remeberMe">
-                <label for="flexCheckChecked">
-                  &nbsp; Remember Me
-                </label>
-              </div> -->
-              <div style="padding-top: 20px; align-items: center; text-align: center;">
-                <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
-              </div>
-            </form>
-            <div style="padding-top: 5px;">
-              <p>New User? Register your organization <button  class="btns" (click)="onRegister()">Here</button></p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <app-footer></app-footer>
-  </div>
+  <!-- <app-footer></app-footer> -->
 </div>
-
-<!-- <alert></alert> -->
