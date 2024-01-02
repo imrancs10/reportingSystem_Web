@@ -116,6 +116,7 @@ export class BussinessService {
     return this.http.put(this.apiUrl + 'Auth/user/showHeader',body,{ headers: httpHeaders });
   }
 
+  //incompletes
   postMessage(values:any){
     console.log(values);
     let body={
@@ -135,6 +136,11 @@ export class BussinessService {
   getAllNotifications(){
     return this.http.get(this.apiUrl+'');
   }
+
+  getReportsOfOrg(){
+    return this.http.get(this.apiUrl+'');
+  }
+
   
   private extractData(res: any) {
     let body = res;

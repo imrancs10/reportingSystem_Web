@@ -39,7 +39,7 @@
                     </div>
                 </ul>
                 <div *ngIf="canAccess && isAdminLogin"> 
-                    <div class="bell-icon">
+                    <div class="bell-icon" >
                         <span class="icon" (click)="toggleBell()" [matMenuTriggerFor]="beforeMenu">    
                         <i matTooltip="Notifications" class="fas fa-bell fa-fw"></i>
                         <span  class="badge bg-danger badge-counter" *ngIf="notificationCount > 0">{{ (notificationCount>10)?'10+':notificationCount }}</span>
@@ -56,7 +56,7 @@
                         </div>
                     </mat-menu>
                 </div>
-                <div class="" style="margin:0px 5px">
+                <div class="" style="margin-top:5px">
                     <span class="icon" [matMenuTriggerFor]="beforeMenuManage">    
                     <i class="fa-solid fa-gear" style="font-size: 16px;"></i>
                     </span>
