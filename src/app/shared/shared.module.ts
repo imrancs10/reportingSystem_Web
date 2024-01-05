@@ -19,9 +19,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReportComponent } from './report/report.component';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent, AboutusComponent],
+  declarations: [HeaderComponent, FooterComponent,TermsconditionComponent,HomeHeaderComponent, ContactusComponent, AboutusComponent,ReportComponent],
   imports:[
     CommonModule,
     MatIconModule,
@@ -37,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     HeaderComponent,
@@ -45,6 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeHeaderComponent,
     ContactusComponent,
     AboutusComponent,
+    ReportComponent,
     MatIconModule,
     MatMenuModule,
     MatInputModule,

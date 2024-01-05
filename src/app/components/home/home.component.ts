@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { BussinessService } from 'src/app/services/bussiness.service';
+import { ReportComponent } from 'src/app/shared/report/report.component';
 
 @Component({
   selector: 'app-home',
@@ -19,11 +21,21 @@ export class HomeComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isProd:boolean=false;
-  constructor(public route:Router,public business:BussinessService){
+  constructor(public route:Router,public business:BussinessService,public dialog: MatDialog,){
   }
 
   ngOnInit(): void {
     this.getOrgReportsData();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ReportComponent);
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result === 'accept') {
+    //     this.termsCondition = true;
+    //   } else this.termsCondition = false;
+    // });
   }
 
   getOrgReportsData(){
@@ -43,6 +55,7 @@ export class HomeComponent implements OnInit{
 
   onEditReport(item:any){
     console.log(item);
+    this.openDialog();
   }
 
   ngAfterViewInit() {

@@ -7,7 +7,7 @@
 
 html,
 body {
-    height: 100%;
+    height: 100vh;
 }
 
 body {
@@ -17,4 +17,171 @@ body {
 
 ag-grid-angular {
     height: 330px !important;
+}
+
+// pattern-1
+
+// body {
+//   background: linear-gradient(135deg, #4b6cb7, #182848); /* Update gradient colors as needed */
+// }
+
+// /* Medical-themed pattern */
+// .medical-pattern {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1; /* Behind other content */
+//   opacity: 0.1; /* Adjust opacity as needed */
+//   pointer-events: none; /* Prevent interaction with the background */
+//   /* Apply a more intricate pattern */
+//   background:
+//     radial-gradient(white 5%, transparent 5%) 0 0 / 100px 100px,
+//     radial-gradient(white 5%, transparent 5%) 50px 50px / 100px 100px,
+//     rgba(255,255,255,0.1);
+//   background-color: #182848; /* Fallback color */
+//   overflow: hidden;
+// }
+
+// pattern-2
+
+// body {
+//   background: linear-gradient(135deg, #4b6cb7, #182848); /* Update gradient colors as needed */
+// }
+
+// /* Medical-themed pattern */
+// .medical-pattern {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1; /* Behind other content */
+//   opacity: 0.2; /* Adjust opacity as needed */
+//   pointer-events: none; /* Prevent interaction with the background */
+//   /* Apply a pattern, adjust or combine patterns as desired */
+//   background: repeating-linear-gradient(
+//     45deg,
+//     rgba(255, 255, 255, 0.05),
+//     rgba(255, 255, 255, 0.05) 10px,
+//     transparent 10px,
+//     transparent 20px
+//   );
+// }
+
+
+//pattern-3
+
+// body {
+//   margin: 0; /* Reset default body margin */
+//   background: linear-gradient(135deg, #4b6cb7, #182848); /* Update gradient colors as needed */
+// }
+
+// /* Medical-themed pattern */
+// .medical-pattern {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1; /* Behind other content */
+//   pointer-events: none; /* Prevent interaction with the background */
+//   transform-style: preserve-3d;
+//   overflow: hidden;
+// }
+
+// .triangle {
+//   position: absolute;
+//   width: 0;
+//   height: 0;
+//   border-left: 100vw solid transparent;
+//   border-right: 100vw solid transparent;
+//   border-bottom: 80vh solid rgba(255, 255, 255, 0.1); /* Adjust triangle size and color as needed */
+// }
+
+//pattern-4
+
+// body {
+//   margin: 0; /* Reset default body margin */
+//   background: linear-gradient(135deg, #89a7ee, #8496b7); /* Update gradient colors as needed */
+// }
+
+// /* Medical-themed pattern */
+// .medical-pattern {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1; /* Behind other content */
+//   pointer-events: none; /* Prevent interaction with the background */
+//   overflow: hidden;
+// }
+
+// /* Generating triangles using pseudo-elements */
+// .medical-pattern:before {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 0;
+//   height: 0;
+//   border-style: solid;
+//   border-width: 0 50vw 100vh 50vw; /* Adjust triangle size */
+//   border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent; /* Adjust triangle color */
+//   transform-origin: 0 0;
+//   transform: rotate(-60deg);
+// }
+
+// .medical-pattern:after {
+//   position: absolute;
+//   top: 0;
+//   left: 50vw;
+//   width: 0;
+//   height: 0;
+//   border-style: solid;
+//   border-width: 0 50vw 100vh 50vw; /* Adjust triangle size */
+//   border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent; /* Adjust triangle color */
+//   transform-origin: 0 0;
+//   transform: rotate(60deg);
+// }
+
+
+//pattern -5
+
+body {
+  margin: 0; /* Reset default body margin */
+  background: linear-gradient(135deg, #4b6cb7, #50648a); /* Update gradient colors as needed */
+}
+
+/* Medical-themed pattern */
+.medical-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind other content */
+  pointer-events: none; /* Prevent interaction with the background */
+  overflow: hidden;
+}
+
+/* Generating multiple triangles */
+@keyframes triangle-animation {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+  }
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100vh 100vw 0 0; /* Adjust triangle size */
+  border-color: rgba(255, 255, 255, 0.1) transparent transparent transparent; /* Adjust triangle color */
+  // animation: triangle-animation 500s linear infinite; /* Adjust animation duration */
 }

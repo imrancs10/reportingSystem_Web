@@ -405,6 +405,12 @@ export class ReportComponent implements OnInit {
       this.openDialog('fields');
       return
     }
+    if(this.model.mobileNo.toString().length!=10){
+      
+      // console.log(this.model.mobileNo.toString().length);
+      this.openDialog('mobile');
+      return
+    }
     // console.log(this.model);
     this.showPreview = true;
     this.model.orgLogoName = sessionStorage.getItem('orgLogoName');

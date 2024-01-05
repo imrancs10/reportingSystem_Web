@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
         if (currentUserRole === 'Admin') {
           return true; // Allow access for admin
         }
-        else if ((state.url === '/home' || state.url==='/report' || state.url==='/home/change-password' || state.url==='/home/profile') && currentUserRole == 'User') {
+        else if ((state.url === '/home' || state.url==='/products/report' || state.url==='/home/change-password' || state.url==='/home/profile') && currentUserRole == 'User') {
           return true;
         }
         else {

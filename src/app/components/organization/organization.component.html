@@ -2,9 +2,9 @@
   <div>
     <app-home-header></app-home-header>
   </div>
-  <div class="line"></div>
-  <div class="card">
-    <h2 class="card-header" style="background-color: rgb(144, 144, 163); text-align: center">
+  <!-- <div class="line"></div> -->
+  <div class="">
+    <h2 >
       Organization Detail
     </h2>
   </div>
@@ -12,9 +12,9 @@
     <div class="container">
       <div class="row">
           <div>
-            <p>Filter Out the <b> Organization</b></p>
+            <h3>Filter Out the <b> Organization</b></h3>
             <div style="margin: 10px;">
-            <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="abc" #input>
+            <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="Organization Name" #input>
             </div>
           </div>
         
@@ -89,13 +89,13 @@
         </div>        
       </div>
       <div class="row" style="margin-bottom: 40px;margin-left: 3px;margin-top: 10px;">
-        <button mat-raised-button (click)="exportData()" color="primary" style="width: 100px;float: right;">
+        <button mat-raised-button (click)="exportData()" color="accent" style="width: 100px;float: right;">
           <mat-icon>download</mat-icon>Export
         </button>
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
 </div>
 
 <!-- <alert></alert> -->

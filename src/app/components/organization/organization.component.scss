@@ -5,22 +5,22 @@
 }
 
 .content {
-    flex: 1; /* Allows the main content to grow and take up remaining space. */
-    padding-top: 20px;
+  flex: 1; /* Allows the main content to grow and take up remaining space. */
+  padding-top: 20px;
 }
 
-.line{
-    // margin-top: 20px;
-    height: 2px;
-    background-color: rgb(74, 71, 71);
-    width: 100%;
+.line {
+  // margin-top: 20px;
+  height: 2px;
+  background-color: rgb(74, 71, 71);
+  width: 100%;
 }
 table {
   width: 100%;
   overflow: hidden;
   // overflow-x: auto;
 }
-.table-container{
+.table-container {
   max-width: 100%;
   overflow-x: scroll;
 }
@@ -28,4 +28,13 @@ table {
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+h2 {
+  background-color: rgb(144, 144, 163);
+  text-align: center;
+  color: white;
+  margin-bottom: 0px;
+  padding: 10px 0px;
+  font-size: 25px;
 }
