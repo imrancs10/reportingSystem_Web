@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BussinessService } from 'src/app/services/bussiness.service';
 import { ReportComponent } from 'src/app/shared/report/report.component';
@@ -16,12 +17,12 @@ export class HomeComponent implements OnInit{
   todayYear:any;
   OrganizationName:any;
   showArrow:boolean=false;
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit','view','edit'];
+  displayedColumns: string[] = ['id','date', 'name', 'refby', 'uhid','view','edit'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isProd:boolean=true;
-  constructor(public route:Router,public business:BussinessService,public dialog: MatDialog,){
+  constructor(public route:Router,public business:BussinessService,public dialog: MatDialog,private sanitizer: DomSanitizer){
   }
 
   ngOnInit(): void {
@@ -30,28 +31,60 @@ export class HomeComponent implements OnInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(ReportComponent);
+  }
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result === 'accept') {
-    //     this.termsCondition = true;
-    //   } else this.termsCondition = false;
-    // });
+  getFormatDate(date:any){
+    return date.split('T')[0];
   }
 
   getOrgReportsData(){
     this.business.getReportsOfOrg().subscribe((res:any)=>{
-      console.log(res);
+      console.log('Search report API',res);
+      this.dataSource=new MatTableDataSource(res)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
-    let res=[
-      {id:'1',name:'raaj',progress:'12',fruit:'2'}
-    ];
-    this.dataSource=new MatTableDataSource(res)
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
+  private getSafeUrl(blob: Blob): any {
+    const unsafeUrl = URL.createObjectURL(blob);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+  }
+  pdfUrl:any;
+  showPreview:boolean=false;
   onViewReport(item:any){
     console.log(item);
+    // this.showPreview = true;
+    // this.business.saveDataToDB(item).subscribe((response) => {
+    //   this.pdfUrl = this.getSafeUrl(response);
+    //   this.onPdfLoad();
+    //   this.showPreview = false;
+    // },
+    //   error => {
+    //     this.showPreview = false;
+    //     // this.openDialog('pdfError');
+    //   });
+  }
+
+  iframe: any;
+
+  onPdfLoad(): void {
+    this.iframe = document.createElement('iframe');
+    this.iframe.style.visibility = 'hidden';
+    this.iframe.src = this.pdfUrl.changingThisBreaksApplicationSecurity;
+    document.body.appendChild(this.iframe);
+
+    this.iframe.onload = () => {
+      this.iframe.contentWindow?.print();
+      setTimeout(() => {
+        this.showPreview = false;
+      }, 2000);
+      setTimeout(() => {
+        // this.openDialog('reset');
+      }, 5000);
+    };
+
   }
 
   onEditReport(item:any){
@@ -59,10 +92,10 @@ export class HomeComponent implements OnInit{
     this.openDialog();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

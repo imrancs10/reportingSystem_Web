@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AlertService } from 'src/app/_alert';
@@ -165,7 +165,6 @@ export class ReportComponent implements OnInit {
     protected alertService: AlertService
   ) {
     let todayDate = new Date();
-    // this.mindate = todayDate;
     this.maxdate = todayDate;
     this.model.date=todayDate.toISOString().split('T')[0];
   }
@@ -518,6 +517,10 @@ export class ReportComponent implements OnInit {
     this.isCadiacInfoFinding = 'Nil';
     this.isPleuraInfomationFinding = 'Nil';
     this.isChestWallInfoFinding = 'Nil';
+    // let todayDate = new Date();
+    // this.maxdate = todayDate;
+    // this.model.date=todayDate.toISOString().split('T')[0];
+    // this.isLungFieldFinding='Nil';
   }
 
   onImageUpload(event: any) {
