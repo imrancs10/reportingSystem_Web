@@ -138,7 +138,7 @@ export class BussinessService {
   }
 
   getReportsOfOrg(){
-    return this.http.get(this.apiUrl+'');
+    return this.http.get(this.apiUrl+'PatientReport/get/orgPatientReport/');
   }
 
   

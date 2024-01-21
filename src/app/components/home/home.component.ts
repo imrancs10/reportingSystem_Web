@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit{
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  isProd:boolean=false;
+  isProd:boolean=true;
   constructor(public route:Router,public business:BussinessService,public dialog: MatDialog,){
   }
 
@@ -39,8 +39,9 @@ export class HomeComponent implements OnInit{
   }
 
   getOrgReportsData(){
-    // this.business.getReportsOfOrg().subscribe((res:any)=>{
-    // })
+    this.business.getReportsOfOrg().subscribe((res:any)=>{
+      console.log(res);
+    })
     let res=[
       {id:'1',name:'raaj',progress:'12',fruit:'2'}
     ];
