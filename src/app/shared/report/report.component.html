@@ -49,10 +49,10 @@
       <!-- First row with 3 inputs -->
       <div class="col-md-4 col-sm-12 columns">
         <label>Patient Name*</label>
-        <input type="text" required [(ngModel)]="model.fullName" name="FullName" class="form-control custom-input"
+        <input type="text" required [(ngModel)]="model.fullName" name="fullName" class="form-control custom-input"
           placeholder="Patient Full Name" />
         <div class="error"
-          *ngIf="patientForm.controls['FullName']?.touched && patientForm.controls['FullName'].errors?.['required']">
+          *ngIf="patientForm.controls['fullName']?.touched && patientForm.controls['fullName'].errors?.['required']">
           Name is required</div>
       </div>
       <div class="col-md-4 col-sm-12 columns">
@@ -739,7 +739,7 @@
     </div>
     <hr>
     <div class="btns">
-      <button mat-raised-button (click)="onReset()" type="reset"
+      <button mat-raised-button (click)="onReset()" type="button"
         style="margin-right: 10px;">Reset<mat-icon>autorenew</mat-icon></button>
       <button mat-raised-button color="primary" type="submit">Proceed<mat-icon>done</mat-icon></button>
       <hr>

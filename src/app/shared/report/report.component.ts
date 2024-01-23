@@ -489,9 +489,9 @@ export class ReportComponent implements OnInit {
   }
 
   onReset() {
-    this.xrayImage='';
+    this.file = '';
+    this.xrayImage = '';
     this.showPreview = false;
-    this.patientForm.reset();
     this.openfirst = false;
     this.openHilum = false;
     this.openMasses = false;
@@ -517,10 +517,23 @@ export class ReportComponent implements OnInit {
     this.isCadiacInfoFinding = 'Nil';
     this.isPleuraInfomationFinding = 'Nil';
     this.isChestWallInfoFinding = 'Nil';
-    // let todayDate = new Date();
-    // this.maxdate = todayDate;
-    // this.model.date=todayDate.toISOString().split('T')[0];
-    // this.isLungFieldFinding='Nil';
+    let todayDate = new Date();
+    this.maxdate = todayDate;
+    this.model.date=todayDate.toISOString().split('T')[0];
+    this.model.fullName='';
+    this.model.uhid='';
+    this.model.refby='';
+    this.model.gender='';
+    this.model.age='';
+    this.model.mobileNo=null;
+    this.patientForm.controls['uhid'].markAsUntouched();
+    this.patientForm.controls['fullName'].markAsUntouched();
+    this.patientForm.controls['refby'].markAsUntouched();
+    this.patientForm.controls['age'].markAsUntouched();
+    this.patientForm.controls['gender'].markAsUntouched();
+    this.patientForm.controls['mobileNo'].markAsUntouched();
+    this.patientForm.controls['XRayReportFileName'].markAsUntouched();
+    
   }
 
   onImageUpload(event: any) {

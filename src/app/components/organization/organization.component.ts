@@ -73,7 +73,7 @@ export class OrganizationComponent implements OnInit {
       // console.log(res);
       this.openSnackbar('Header changes on report successfully');
     },error=>{
-      console.log(error);
+      // console.log(error);
       this.openSnackbar('Error happens, please contact IT Administrator');
     })
   }

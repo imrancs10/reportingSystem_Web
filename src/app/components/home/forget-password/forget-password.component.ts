@@ -42,7 +42,7 @@ export class ForgetPasswordComponent implements OnInit {
     }
     this.business.changePasswordFunc(model).subscribe((res:any)=>{
       if(res){
-        console.log("done");
+        // console.log("done");
         this.alertService.success("Password Changed",this.options);
         form.reset();
         // this.route.navigate(['/home']);

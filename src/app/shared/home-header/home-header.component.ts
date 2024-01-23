@@ -28,13 +28,13 @@ export class HomeHeaderComponent implements OnInit {
 
   onGetAllNotifications(){
     this.businesServ.getAllNotifications().subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       //unread read flag only show read mssgs....
       //array of mssgss along with date and time and info. milega response m..
       this.allMessages=res;
       this.notificationCount=res.length;
     },(error)=>{
-      console.log(error);
+      // console.log(error);
     }
     )
   }

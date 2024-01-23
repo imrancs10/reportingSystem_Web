@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   todayYear:any;
   OrganizationName:any;
   showArrow:boolean=false;
-  displayedColumns: string[] = ['id','date', 'name', 'refby', 'uhid','view','edit'];
+  displayedColumns: string[] = ['id','date', 'name', 'refby', 'uhid'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit{
 
   getOrgReportsData(){
     this.business.getReportsOfOrg().subscribe((res:any)=>{
-      console.log('Search report API',res);
+      // console.log('Search report API',res);
       this.dataSource=new MatTableDataSource(res)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit{
   pdfUrl:any;
   showPreview:boolean=false;
   onViewReport(item:any){
-    console.log(item);
+    // console.log(item);
     // this.showPreview = true;
     // this.business.saveDataToDB(item).subscribe((response) => {
     //   this.pdfUrl = this.getSafeUrl(response);
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit{
   }
 
   onEditReport(item:any){
-    console.log(item);
+    // console.log(item);
     this.openDialog();
   }
 
