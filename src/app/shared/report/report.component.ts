@@ -533,7 +533,7 @@ export class ReportComponent implements OnInit {
     this.patientForm.controls['gender'].markAsUntouched();
     this.patientForm.controls['mobileNo'].markAsUntouched();
     this.patientForm.controls['XRayReportFileName'].markAsUntouched();
-    
+    this.model.XRayReportFileName = ''
   }
 
   onImageUpload(event: any) {
